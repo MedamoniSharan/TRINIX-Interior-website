@@ -1,41 +1,112 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
 
 interface FunFact {
   id: string;
-  number: string;
+  value: number;
   label: string;
 }
 
 const funFacts: FunFact[] = [
   {
     id: "interior",
-    number: "30",
+    value: 120,
     label: "OF INTERIOR",
   },
   {
     id: "experience",
-    number: "5",
+    value: 12,
     label: "YEARS OF EXPERIENCE",
   },
   {
     id: "team",
-    number: "10",
+    value: 25,
     label: "PROFESSIONAL TEAM",
   },
   {
     id: "awards",
-    number: "3",
+    value: 15,
     label: "BEST INTERIOR AWARDS",
   },
 ];
 
-export function InteriorFunFacts() {
-  const [activeId, setActiveId] = useState("experience");
+function CountUpNumber({
+  value,
+  active,
+  start,
+}: {
+  value: number;
+  active: boolean;
+  start: boolean;
+}) {
+  const spanRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const el = spanRef.current;
+    if (!el) return;
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!start || reduced) {
+      el.textContent = String(value);
+      return;
+    }
+
+    const counter = { n: 0 };
+    const tween = gsap.to(counter, {
+      n: value,
+      duration: 1.8,
+      ease: "power2.out",
+      onUpdate: () => {
+        el.textContent = String(Math.round(counter.n));
+      },
+    });
+
+    return () => {
+      tween.kill();
+    };
+  }, [start, value]);
 
   return (
-    <section className="interior-facts" aria-labelledby="facts-title">
+    <strong
+      className="interior-facts__number"
+      data-active={active ? "true" : "false"}
+    >
+      <span ref={spanRef}>0</span>+
+    </strong>
+  );
+}
+
+export function InteriorFunFacts() {
+  const [activeId, setActiveId] = useState("experience");
+  const [started, setStarted] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const node = sectionRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStarted(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.35 },
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section
+      ref={sectionRef}
+      className="interior-facts"
+      aria-labelledby="facts-title"
+    >
       <h2 id="facts-title" className="sr-only">
         Interior design studio achievements
       </h2>
@@ -99,8 +170,10 @@ export function InteriorFunFacts() {
           letter-spacing: -0.06em;
           opacity: 0.2;
           transition: opacity 0.4s ease, transform 0.4s ease;
+          font-variant-numeric: tabular-nums;
         }
-        .interior-facts__item[aria-pressed="true"] .interior-facts__number {
+        .interior-facts__item[aria-pressed="true"] .interior-facts__number,
+        .interior-facts__number[data-active="true"] {
           opacity: 1;
           transform: scale(1.02);
         }
@@ -169,11 +242,14 @@ export function InteriorFunFacts() {
               key={fact.id}
               type="button"
               aria-pressed={activeId === fact.id}
+              aria-label={`${fact.value}+ ${fact.label}`}
               onClick={() => setActiveId(fact.id)}
             >
-              <strong className="interior-facts__number">
-                <span>{fact.number}</span>+
-              </strong>
+              <CountUpNumber
+                value={fact.value}
+                active={activeId === fact.id}
+                start={started}
+              />
               <span className="interior-facts__label">{fact.label}</span>
             </button>
           ))}

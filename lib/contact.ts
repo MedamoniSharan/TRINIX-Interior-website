@@ -3,7 +3,7 @@ import type { SiteContact } from "@/lib/types";
 export const CONTACT: SiteContact = {
   phone: "7659870346",
   phoneDisplay: "+91 76598 70346",
-  email: "trinathdesigns@gmail.com",
+  email: "trinexbytds@gmail.com",
   address: "805/W, Prashanthi Nagar, Vanasthalipuram – 500070, Hyderabad",
   mapsUrl: "https://maps.app.goo.gl/WDJth9rNmkyPd3XS6",
   hours: {

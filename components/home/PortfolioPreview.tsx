@@ -62,13 +62,13 @@ export function PortfolioPreview({ items }: { items: PortfolioItem[] }) {
                 key={item.slug}
                 as="article"
                 direction={index % 2 === 0 ? "up" : "scale"}
-                className={span}
+                className={`${span} h-full`}
               >
                 <motion.a
                   href="/contact/"
                   className={`group relative block overflow-hidden rounded-[1.25rem] bg-[#e8ecf1] ${
                     featured
-                      ? "min-h-[340px] md:min-h-[420px] lg:min-h-full lg:h-full"
+                      ? "h-full min-h-[340px] md:min-h-[480px] lg:min-h-[560px]"
                       : tall
                         ? "aspect-[4/5] sm:aspect-[5/6]"
                         : "aspect-[16/11]"
@@ -80,7 +80,14 @@ export function PortfolioPreview({ items }: { items: PortfolioItem[] }) {
                   <motion.img
                     src={item.image}
                     alt={item.title}
-                    className="absolute inset-0 h-full w-full object-cover"
+                    className="absolute inset-0"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      maxWidth: "none",
+                      objectFit: "cover",
+                      objectPosition: "center",
+                    }}
                     variants={{
                       rest: { scale: 1 },
                       hover: { scale: 1.06 },
@@ -88,7 +95,7 @@ export function PortfolioPreview({ items }: { items: PortfolioItem[] }) {
                     transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0b1220]/80 via-[#0b1220]/15 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-95" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0b1220]/55 via-[#0b1220]/10 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
 
                   <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 md:p-6">
                     <div>

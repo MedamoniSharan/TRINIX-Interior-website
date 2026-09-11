@@ -11,8 +11,11 @@ import {
   type Variants,
 } from "motion/react";
 import { CONTACT } from "@/lib/contact";
+import { getCompany } from "@/lib/content";
 
-const companyName = "TRINEX";
+const company = getCompany();
+const companyName = company.shortName;
+const companyFullName = company.name;
 
 const iconClassName = "w-5 h-5";
 
@@ -64,7 +67,7 @@ const TrinexLogo = ({ className }: { className?: string }) => {
     // eslint-disable-next-line @next/next/no-img-element
     <img
       src="/images/trinex-logo-v2.png"
-      alt="TRINEX by Trinath Design Studio"
+      alt={companyFullName}
       width={144}
       height={144}
       className={className}
@@ -314,7 +317,7 @@ export default function FooterSection5() {
                 )}
               </div>
               <p className="font-light text-white/80 text-xs md:text-[13px] mt-1">
-                © {new Date().getFullYear()} {companyName}, All rights reserved
+                © {new Date().getFullYear()} {companyFullName}. All rights reserved
               </p>
             </div>
           </motion.div>

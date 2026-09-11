@@ -26,6 +26,7 @@ import type {
 
 export type CompanyInfo = {
   name: string;
+  shortName: string;
   tagline: string;
   process: string;
   summary: string;

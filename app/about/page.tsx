@@ -8,7 +8,7 @@ import styles from "../page-shell.module.css";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Learn about TRINEX — a Hyderabad-based turnkey interior and design consultancy delivering complete design-to-execution solutions.",
+    "Learn about TRINEX by TRINATH DESIGN STUDIO — a Hyderabad-based turnkey interior and design consultancy delivering complete design-to-execution solutions.",
 };
 
 export default function AboutPage() {

@@ -4,16 +4,17 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "TRINEX | Next-Gen 3D Architectural Studio",
+    default: "TRINEX by TRINATH DESIGN STUDIO | Next-Gen 3D Architectural Studio",
     template: "%s | TRINEX",
   },
   description:
-    "TRINEX is a professional turnkey interior & design consultancy in Hyderabad. Complete design-to-execution solutions for residential and commercial projects.",
+    "TRINEX by TRINATH DESIGN STUDIO is a professional turnkey interior & design consultancy in Hyderabad. Complete design-to-execution solutions for residential and commercial projects.",
   keywords: [
     "interior design Hyderabad",
     "turnkey interiors",
     "3D visualization",
     "TRINEX",
+    "TRINATH DESIGN STUDIO",
     "architectural design",
   ],
 };

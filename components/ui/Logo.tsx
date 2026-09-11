@@ -17,13 +17,13 @@ export function Logo({ className, height = 88 }: LogoProps) {
     <Link
       href="/"
       className={`${styles.logo}${className ? ` ${className}` : ""}`}
-      aria-label="TRINEX home"
+      aria-label="TRINEX by TRINATH DESIGN STUDIO home"
     >
       {!imgError ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src="/images/trinex-logo-v2.png"
-          alt="TRINEX by Trinath Design Studio"
+          alt="TRINEX by TRINATH DESIGN STUDIO"
           width={height}
           height={height}
           style={{ height, width: "auto" }}
@@ -32,7 +32,7 @@ export function Logo({ className, height = 88 }: LogoProps) {
       ) : (
         <span className={styles.fallback}>
           <strong>TRINEX</strong>
-          <small>by Trinath Design Studio</small>
+          <small>by TRINATH DESIGN STUDIO</small>
         </span>
       )}
     </Link>

@@ -4,10 +4,8 @@ import { CompareReveal } from "@/components/ui/compare-reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Parallax, Reveal } from "@/components/motion/Reveal";
 
-const BEFORE_IMAGE =
-  "https://images.unsplash.com/photo-1581858726788-75bc0f142a1e?auto=format&fit=crop&w=1600&q=80";
-const AFTER_IMAGE =
-  "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=80";
+const BEFORE_IMAGE = "/images/before-after/before-lounge.jpg";
+const AFTER_IMAGE = "/images/before-after/after-construction.jpg";
 
 export function BeforeAfterDesign() {
   return (
@@ -27,11 +25,11 @@ export function BeforeAfterDesign() {
                 style={{ aspectRatio: "16 / 10" }}
                 before={{
                   src: BEFORE_IMAGE,
-                  alt: "Empty interior shell before renovation",
+                  alt: "Existing lounge interior before TRINEX redesign",
                 }}
                 after={{
                   src: AFTER_IMAGE,
-                  alt: "Finished living room after TRINEX design",
+                  alt: "Project execution and fit-out after design kickoff",
                 }}
                 labels={["Before", "After"]}
                 defaultPosition={50}

@@ -8,7 +8,7 @@ import styles from "./contact.module.css";
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Book a free consultation with TRINEX. Call 7659870346 or visit our studio in Vanasthalipuram, Hyderabad.",
+    "Book a free consultation with TRINEX by TRINATH DESIGN STUDIO. Call 7659870346 or visit our studio in Vanasthalipuram, Hyderabad.",
 };
 
 export default function ContactPage() {

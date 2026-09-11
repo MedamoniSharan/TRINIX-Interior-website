@@ -5,11 +5,11 @@ import { Reveal } from "@/components/motion/Reveal";
 import { getServices } from "@/lib/content";
 
 export const squeezeCarouselSettings = {
-  height: 320,
-  gap: 16,
-  slatGap: 8,
-  slatWidth: 8,
-  radius: 6,
+  height: "clamp(280px, 48cqi, 560px)",
+  gap: 18,
+  slatGap: 10,
+  slatWidth: 10,
+  radius: 8,
   duration: 1000,
   hoverGrow: true,
   autoplay: false,
@@ -54,9 +54,9 @@ export default function SqueezeCarouselSection(props: SqueezeCarouselSectionProp
   return (
     <section
       id="featured-spaces"
-      className="section w-full overflow-hidden bg-background px-6 py-10 md:px-10"
+      className="section w-full overflow-hidden bg-background px-4 py-12 md:px-8 md:py-16"
     >
-      <div className="container mx-auto max-w-[1200px]">
+      <div className="container mx-auto max-w-[1440px]">
         <Reveal direction="right">
           <SqueezeCarousel
             slides={slides}
