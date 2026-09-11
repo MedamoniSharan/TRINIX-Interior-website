@@ -50,7 +50,7 @@ export function Reveal({
   delay = 0,
   duration = 0.75,
   className,
-  once = true,
+  once = false,
   amount = 0.22,
   as = "div",
 }: RevealProps) {
@@ -58,7 +58,13 @@ export function Reveal({
   const Component = motion[as];
 
   const variants: Variants = {
-    hidden: reduced ? { opacity: 1, x: 0, y: 0, scale: 1 } : hiddenFor(direction),
+    hidden: {
+      ...(reduced ? { opacity: 1, x: 0, y: 0, scale: 1 } : hiddenFor(direction)),
+      transition: {
+        duration: reduced ? 0 : 0.4,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
     visible: {
       opacity: 1,
       x: 0,
@@ -78,7 +84,7 @@ export function Reveal({
       variants={variants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once, amount, margin: "0px 0px -8% 0px" }}
+      viewport={{ once, amount, margin: "0px 0px -10% 0px" }}
     >
       {children}
     </Component>
@@ -99,7 +105,7 @@ export function Stagger({
   className,
   stagger = 0.1,
   delayChildren = 0.05,
-  once = true,
+  once = false,
   amount = 0.18,
 }: StaggerProps) {
   const reduced = useReducedMotion();
@@ -109,7 +115,7 @@ export function Stagger({
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once, amount }}
+      viewport={{ once, amount, margin: "0px 0px -8% 0px" }}
       variants={{
         hidden: {},
         visible: {
@@ -126,7 +132,10 @@ export function Stagger({
 }
 
 export const staggerItem = (direction: RevealDirection = "up"): Variants => ({
-  hidden: hiddenFor(direction),
+  hidden: {
+    ...hiddenFor(direction),
+    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+  },
   visible: {
     opacity: 1,
     x: 0,

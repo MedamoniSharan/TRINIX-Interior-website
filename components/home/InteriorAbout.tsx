@@ -171,7 +171,7 @@ export function InteriorAbout() {
           variants={reduced ? undefined : stagger}
           initial={reduced ? false : "hidden"}
           whileInView={reduced ? undefined : "visible"}
-          viewport={{ once: true, amount: 0.25 }}
+          viewport={{ once: false, amount: 0.25 }}
         >
           <motion.figure className="interior-image-wrap" variants={fadeLeft}>
             <Parallax y={28} className="h-full min-h-full w-full">

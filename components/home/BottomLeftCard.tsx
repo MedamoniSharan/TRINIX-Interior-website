@@ -20,33 +20,58 @@ export const BottomLeftCard = forwardRef<HTMLDivElement>(
 
     useEffect(() => {
       const countEl = countRef.current;
-      if (!countEl) return;
+      const node = localRef.current;
+      if (!countEl || !node) return;
 
-      const counter = { value: 0 };
-      const ctx = gsap.context(() => {
-        gsap.to(counter, {
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      let floatTween: gsap.core.Tween | null = null;
+      let countTween: gsap.core.Tween | null = null;
+
+      const playCount = () => {
+        countTween?.kill();
+        if (reduced) {
+          countEl.textContent = "120+";
+          return;
+        }
+        const counter = { value: 0 };
+        countEl.textContent = "0+";
+        countTween = gsap.to(counter, {
           value: 120,
           duration: 1.9,
-          delay: 0.85,
           ease: "power2.out",
           onUpdate: () => {
             countEl.textContent = `${Math.round(counter.value)}+`;
           },
         });
+      };
 
-        if (localRef.current) {
-          gsap.to(localRef.current, {
-            y: -6,
-            duration: 2.4,
-            ease: "sine.inOut",
-            yoyo: true,
-            repeat: -1,
-            delay: 1.6,
-          });
-        }
-      });
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            playCount();
+            if (!reduced && !floatTween && localRef.current) {
+              floatTween = gsap.to(localRef.current, {
+                y: -6,
+                duration: 2.4,
+                ease: "sine.inOut",
+                yoyo: true,
+                repeat: -1,
+              });
+            }
+          } else {
+            countTween?.kill();
+            countEl.textContent = "0+";
+          }
+        },
+        { threshold: 0.4 },
+      );
 
-      return () => ctx.revert();
+      observer.observe(node);
+      return () => {
+        observer.disconnect();
+        countTween?.kill();
+        floatTween?.kill();
+      };
     }, []);
 
     const scaleTo = (value: number) => {

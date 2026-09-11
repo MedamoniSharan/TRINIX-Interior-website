@@ -35,11 +35,11 @@ const funFacts: FunFact[] = [
 function CountUpNumber({
   value,
   active,
-  start,
+  playId,
 }: {
   value: number;
   active: boolean;
-  start: boolean;
+  playId: number;
 }) {
   const spanRef = useRef<HTMLSpanElement>(null);
 
@@ -48,12 +48,17 @@ function CountUpNumber({
     if (!el) return;
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (!start || reduced) {
+    if (playId === 0) {
+      el.textContent = "0";
+      return;
+    }
+    if (reduced) {
       el.textContent = String(value);
       return;
     }
 
     const counter = { n: 0 };
+    el.textContent = "0";
     const tween = gsap.to(counter, {
       n: value,
       duration: 1.8,
@@ -66,7 +71,7 @@ function CountUpNumber({
     return () => {
       tween.kill();
     };
-  }, [start, value]);
+  }, [playId, value]);
 
   return (
     <strong
@@ -80,7 +85,7 @@ function CountUpNumber({
 
 export function InteriorFunFacts() {
   const [activeId, setActiveId] = useState("experience");
-  const [started, setStarted] = useState(false);
+  const [playId, setPlayId] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -90,11 +95,12 @@ export function InteriorFunFacts() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setStarted(true);
-          observer.disconnect();
+          setPlayId((id) => id + 1);
+        } else {
+          setPlayId(0);
         }
       },
-      { threshold: 0.35 },
+      { threshold: 0.3 },
     );
 
     observer.observe(node);
@@ -248,7 +254,7 @@ export function InteriorFunFacts() {
               <CountUpNumber
                 value={fact.value}
                 active={activeId === fact.id}
-                start={started}
+                playId={playId}
               />
               <span className="interior-facts__label">{fact.label}</span>
             </button>
