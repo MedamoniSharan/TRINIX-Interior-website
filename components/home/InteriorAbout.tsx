@@ -10,6 +10,7 @@ import {
   type Variants,
 } from "motion/react";
 import { CONTACT } from "@/lib/contact";
+import { Parallax } from "@/components/motion/Reveal";
 
 interface Stat {
   value: number;
@@ -82,11 +83,20 @@ function AnimatedCounter({
   );
 }
 
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 28 },
+const fadeLeft: Variants = {
+  hidden: { opacity: 0, x: -36 },
   visible: {
     opacity: 1,
-    y: 0,
+    x: 0,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const fadeRight: Variants = {
+  hidden: { opacity: 0, x: 36 },
+  visible: {
+    opacity: 1,
+    x: 0,
     transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
   },
 };
@@ -140,17 +150,12 @@ export function InteriorAbout() {
           gap: 3rem;
           align-items: center;
         }
-        .interior-image-wrap {
-          overflow: hidden;
-          aspect-ratio: 0.93;
-          background: #e8ecf1;
-          border-radius: 2px;
-          box-shadow: 0 18px 48px rgba(26, 35, 50, 0.08);
-        }
+        .interior-image-wrap { overflow: hidden; aspect-ratio: 0.93; background: #e8ecf1; border-radius: 2px; box-shadow: 0 18px 48px rgba(26, 35, 50, 0.08); }
         .interior-image-wrap img {
           display: block;
           width: 100%;
-          height: 100%;
+          height: 118%;
+          margin-top: -9%;
           object-fit: cover;
           transition: transform .9s cubic-bezier(0.22, 1, 0.36, 1);
         }
@@ -331,22 +336,24 @@ export function InteriorAbout() {
           whileInView={reduced ? undefined : "visible"}
           viewport={{ once: true, amount: 0.25 }}
         >
-          <motion.figure className="interior-image-wrap" variants={fadeUp}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/featured/living.jpg"
-              alt="Warmly lit contemporary interior with sculptural furniture"
-            />
+          <motion.figure className="interior-image-wrap" variants={fadeLeft}>
+            <Parallax y={40} className="h-full w-full">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/featured/living.jpg"
+                alt="Warmly lit contemporary interior with sculptural furniture"
+              />
+            </Parallax>
           </motion.figure>
 
-          <motion.div className="interior-title-block" variants={fadeUp}>
+          <motion.div className="interior-title-block" variants={fadeLeft}>
             <p className="interior-kicker">About us</p>
             <h2 className="interior-title" id="about-title">
               We&apos;re committed to turning your vision into reality
             </h2>
           </motion.div>
 
-          <motion.div className="interior-copy-block" variants={fadeUp}>
+          <motion.div className="interior-copy-block" variants={fadeRight}>
             <p className="interior-copy">
               TRINEX creates spaces that are not only visually stunning but also
               functional and uniquely yours. From private residences to commercial

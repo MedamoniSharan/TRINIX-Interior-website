@@ -489,9 +489,13 @@ export function SqueezeCarousel({
               }}
             >
               <p className="max-w-[46rem] text-[15px] leading-[1.6] text-balance @lg:text-[17px]">
-                <span className="text-foreground">{slide.title}</span>{" "}
+                <span style={{ color: "var(--color-text-primary, #1a2332)" }}>
+                  {slide.title}
+                </span>{" "}
                 {slide.description && (
-                  <span className="text-muted-foreground">{slide.description}</span>
+                  <span style={{ color: "var(--color-text-muted, #6b7280)" }}>
+                    {slide.description}
+                  </span>
                 )}
               </p>
 
@@ -514,11 +518,23 @@ export function SqueezeCarousel({
  * the card is a slat, width once it opens — so the picture would rescale
  * mid-slide and be resampled every frame. One block means one scale: the card
  * only ever changes how much of it you can see.
+ *
+ * Height/max-width must be inline: global `img { height: auto; max-width: 100% }`
+ * is unlayered and otherwise wins over Tailwind utilities, collapsing narrow
+ * side panels into a tiny thumbnail with empty space below.
  */
 function Picture({ slide }: { slide: SqueezeSlide }) {
   const box = {
+    position: "absolute",
+    top: 0,
+    bottom: 0,
+    left: "50%",
     width: "var(--sq-hero)",
     minWidth: "100%",
+    height: "100%",
+    maxWidth: "none",
+    transform: "translateX(-50%)",
+    objectFit: "cover",
   } as const;
 
   if (slide.image) {
@@ -528,7 +544,7 @@ function Picture({ slide }: { slide: SqueezeSlide }) {
         src={slide.image}
         alt={slide.imageAlt ?? ""}
         draggable={false}
-        className="absolute inset-y-0 left-1/2 h-full max-w-none -translate-x-1/2 object-cover"
+        className="pointer-events-none"
         style={box}
       />
     );
@@ -537,7 +553,7 @@ function Picture({ slide }: { slide: SqueezeSlide }) {
   return (
     <span
       aria-hidden="true"
-      className="absolute inset-y-0 left-1/2 -translate-x-1/2"
+      className="pointer-events-none"
       style={{ background: slide.background, ...box }}
     />
   );
@@ -559,11 +575,12 @@ function Arrow({
       onClick={onClick}
       className={cn(
         "grid size-9 cursor-pointer place-items-center rounded-md",
-        "bg-[var(--sq-fill)] text-[var(--sq-on-fill)]",
+        "bg-[var(--sq-fill)]",
         "transition-opacity hover:opacity-85 outline-none",
         "focus-visible:ring-2 focus-visible:ring-[var(--sq-fill)]",
         "focus-visible:ring-offset-2 focus-visible:ring-offset-background",
       )}
+      style={{ color: "var(--sq-on-fill)" }}
     >
       <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
         <path
@@ -604,11 +621,13 @@ function Action({ slide, shown }: { slide: SqueezeSlide; shown: boolean }) {
 
   const dress = cn(
     "group/sq-action inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-md",
-    "bg-[var(--sq-fill)] px-4 py-2.5 text-sm font-medium text-[var(--sq-on-fill)]",
+    "bg-[var(--sq-fill)] px-4 py-2.5 text-sm font-medium",
     "transition-opacity hover:opacity-85 outline-none",
     "focus-visible:ring-2 focus-visible:ring-[var(--sq-fill)]",
     "focus-visible:ring-offset-2 focus-visible:ring-offset-background",
   );
+
+  const colorStyle = { color: "var(--sq-on-fill)" } as const;
 
   if (slide.href) {
     return (
@@ -619,6 +638,7 @@ function Action({ slide, shown }: { slide: SqueezeSlide; shown: boolean }) {
         tabIndex={shown ? 0 : -1}
         onClick={slide.onAction}
         className={dress}
+        style={colorStyle}
       >
         {inside}
       </a>
@@ -626,7 +646,13 @@ function Action({ slide, shown }: { slide: SqueezeSlide; shown: boolean }) {
   }
 
   return (
-    <button type="button" tabIndex={shown ? 0 : -1} onClick={slide.onAction} className={dress}>
+    <button
+      type="button"
+      tabIndex={shown ? 0 : -1}
+      onClick={slide.onAction}
+      className={dress}
+      style={colorStyle}
+    >
       {inside}
     </button>
   );

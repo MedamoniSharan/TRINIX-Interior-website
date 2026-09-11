@@ -1,6 +1,7 @@
 "use client";
 
 import { SqueezeCarousel, type SqueezeSlide } from "@/components/ui/carousel-squeeze";
+import { Reveal } from "@/components/motion/Reveal";
 
 export const squeezeCarouselSettings = {
   height: 320,
@@ -106,15 +107,20 @@ export default function SqueezeCarouselSection(props: SqueezeCarouselSectionProp
   const options = { ...squeezeCarouselSettings, ...props };
 
   return (
-    <section id="featured-spaces" className="section w-full bg-background px-6 py-10 md:px-10">
+    <section
+      id="featured-spaces"
+      className="section w-full overflow-hidden bg-background px-6 py-10 md:px-10"
+    >
       <div className="container mx-auto max-w-[1200px]">
-        <SqueezeCarousel
-          slides={slides}
-          label="Featured spaces"
-          accent="var(--color-brand)"
-          accentForeground="#ffffff"
-          {...options}
-        />
+        <Reveal direction="right">
+          <SqueezeCarousel
+            slides={slides}
+            label="Featured spaces"
+            accent="var(--color-brand)"
+            accentForeground="#ffffff"
+            {...options}
+          />
+        </Reveal>
       </div>
     </section>
   );

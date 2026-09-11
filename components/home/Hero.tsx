@@ -2,6 +2,12 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "motion/react";
 import { BottomLeftCard } from "./BottomLeftCard";
 import { BottomRightCorner } from "./BottomRightCorner";
 import { HeroBadge } from "./HeroBadge";
@@ -12,12 +18,31 @@ const VIDEO_SRC =
   "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260428_193507_4286c423-2fd9-4efd-92bd-91a939453fc1.mp4";
 
 export function Hero() {
+  const rootRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLElement>(null);
   const badgeRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const leftCardRef = useRef<HTMLDivElement>(null);
   const rightCardRef = useRef<HTMLAnchorElement>(null);
+  const reduced = useReducedMotion();
+
+  const { scrollYProgress } = useScroll({
+    target: rootRef,
+    offset: ["start start", "end start"],
+  });
+  const videoY = useTransform(scrollYProgress, [0, 1], [0, reduced ? 0 : 140]);
+  const videoScale = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [1, reduced ? 1 : 1.12],
+  );
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, reduced ? 0 : -60]);
+  const contentOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.65],
+    [1, reduced ? 1 : 0.15],
+  );
 
   useEffect(() => {
     const targets = [
@@ -87,21 +112,28 @@ export function Hero() {
   }, []);
 
   return (
-    <div className="w-full h-screen flex items-center justify-center p-3 md:p-5 bg-[#f0f0f0]">
+    <div
+      ref={rootRef}
+      className="w-full h-screen flex items-center justify-center p-3 md:p-5 bg-[#f0f0f0]"
+    >
       <section className="relative w-full max-w-[1536px] h-full rounded-[1.5rem] md:rounded-[3rem] overflow-hidden shadow-none flex flex-col items-center bg-white/10 group">
-        <video
+        <motion.video
           autoPlay
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover object-[65%] lg:object-center z-0"
+          style={{ y: videoY, scale: videoScale }}
+          className="absolute inset-0 w-full h-[115%] -top-[7.5%] object-cover object-[65%] lg:object-center z-0 will-change-transform"
         >
           <source src={VIDEO_SRC} type="video/mp4" />
-        </video>
+        </motion.video>
 
         <HeroCanvas />
 
-        <div className="relative z-10 w-full h-full flex flex-col items-center">
+        <motion.div
+          style={{ y: contentY, opacity: contentOpacity }}
+          className="relative z-10 w-full h-full flex flex-col items-center will-change-transform"
+        >
           <Navbar ref={navRef} />
 
           <div className="w-full flex flex-col items-center pt-8 px-6 text-center max-w-4xl">
@@ -124,7 +156,7 @@ export function Hero() {
 
           <BottomLeftCard ref={leftCardRef} />
           <BottomRightCorner ref={rightCardRef} />
-        </div>
+        </motion.div>
       </section>
     </div>
   );

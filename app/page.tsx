@@ -1,5 +1,6 @@
 import { Hero } from "@/components/home/Hero";
 import { InteriorAbout } from "@/components/home/InteriorAbout";
+import { ProcessMarquee } from "@/components/home/ProcessMarquee";
 import { Testimonials } from "@/components/home/Testimonials";
 import { PortfolioPreview } from "@/components/home/PortfolioPreview";
 import SqueezeCarouselSection from "@/components/home/SqueezeCarouselSection";
@@ -16,6 +17,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-[#f0f0f0]">
       <Hero />
       <InteriorAbout />
+      <ProcessMarquee />
       <SqueezeCarouselSection />
       <BeforeAfterDesign />
       <Testimonials items={getTestimonials()} />
