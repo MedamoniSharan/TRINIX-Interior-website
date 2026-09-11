@@ -21,11 +21,11 @@ export default function HomePage() {
       <InteriorAbout />
       <InteriorFunFacts />
       <ProcessMarquee />
-      <HowWeWork />
       <InteriorQualitySection />
       <SqueezeCarouselSection />
       <BeforeAfterDesign />
       <PortfolioPreview items={getPortfolio()} />
+      <HowWeWork />
       <LocationMap />
       <FaqAccordion items={getFaqs()} />
     </div>
