@@ -62,7 +62,14 @@ export default function AboutPage() {
               <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
             </li>
             <li>
-              <strong>Address:</strong> {CONTACT.address}
+              <strong>Address:</strong>{" "}
+              <a
+                href={CONTACT.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {CONTACT.address}
+              </a>
             </li>
             <li>
               <strong>Hours:</strong> {CONTACT.hours.weekdays};{" "}

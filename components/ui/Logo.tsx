@@ -10,7 +10,7 @@ type LogoProps = {
   height?: number;
 };
 
-export function Logo({ className, height = 64 }: LogoProps) {
+export function Logo({ className, height = 88 }: LogoProps) {
   const [imgError, setImgError] = useState(false);
 
   return (

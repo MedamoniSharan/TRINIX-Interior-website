@@ -1,8 +1,15 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import { FlutedGlass } from "@paper-design/shaders-react";
 import Link from "next/link";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+  type Variants,
+} from "motion/react";
 import { CONTACT } from "@/lib/contact";
 
 const companyName = "TRINEX";
@@ -44,14 +51,22 @@ function PhoneIcon({ className }: { className?: string }) {
   );
 }
 
+function LinkedInIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.73V1.73C24 .77 23.21 0 22.23 0z" />
+    </svg>
+  );
+}
+
 const TrinexLogo = ({ className }: { className?: string }) => {
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
       src="/images/trinex-logo-v2.png"
       alt="TRINEX by Trinath Design Studio"
-      width={120}
-      height={120}
+      width={144}
+      height={144}
       className={className}
     />
   );
@@ -61,11 +76,13 @@ const footerLinks = [
   {
     title: "Services",
     links: [
-      { name: "Turnkey Interior Projects", href: "/services/turnkey-interior-projects/" },
-      { name: "Residential Interiors", href: "/services/residential-interior-design/" },
-      { name: "Commercial Projects", href: "/services/commercial-interior-projects/" },
-      { name: "3D Visualization", href: "/services/3d-visualization/" },
-      { name: "Modular Furniture", href: "/services/modular-custom-furniture/" },
+      { name: "Architectural Services", href: "/services/architectural-services/" },
+      { name: "Structural Design", href: "/services/structural-design-services/" },
+      { name: "Residential Interiors", href: "/services/residential-interior-design-projects/" },
+      { name: "Commercial Interiors", href: "/services/commercial-interiors-projects/" },
+      { name: "Construction Activities", href: "/services/construction-activities/" },
+      { name: "Turnkey Projects", href: "/services/turnkey-projects/" },
+      { name: "Project Management", href: "/services/project-management-services/" },
       { name: "All Services", href: "/services/" },
     ],
   },
@@ -83,21 +100,144 @@ const footerLinks = [
 const socialIcons = [
   { name: "Instagram", href: CONTACT.instagram, Icon: InstagramIcon },
   { name: "Facebook", href: CONTACT.facebook, Icon: FacebookIcon },
+  { name: "LinkedIn", href: CONTACT.linkedin, Icon: LinkedInIcon },
   { name: "Email", href: `mailto:${CONTACT.email}`, Icon: MailIcon },
   { name: "Call", href: `tel:${CONTACT.phone}`, Icon: PhoneIcon },
 ];
 
+const ease = [0.22, 1, 0.36, 1] as const;
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 36 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease },
+  },
+};
+
+const fadeLeft: Variants = {
+  hidden: { opacity: 0, x: -40 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.7, ease },
+  },
+};
+
+const fadeRight: Variants = {
+  hidden: { opacity: 0, x: 40 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.7, ease },
+  },
+};
+
+const staggerParent: Variants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.1, delayChildren: 0.08 },
+  },
+};
+
+const linkItem: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.45, ease },
+  },
+};
+
 export default function FooterSection5() {
+  const rootRef = useRef<HTMLElement>(null);
+  const reduced = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: rootRef,
+    offset: ["start end", "end end"],
+  });
+
+  const wordmarkY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    reduced ? [0, 0] : [80, -40],
+  );
+  const wordmarkOpacity = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [1, 1],
+  );
+  const wordmarkScale = useTransform(
+    scrollYProgress,
+    [0, 1],
+    reduced ? [1, 1] : [0.92, 1.04],
+  );
+  const panelY = useTransform(
+    scrollYProgress,
+    [0, 0.45],
+    reduced ? [0, 0] : [64, 0],
+  );
+  const glassOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.35, 1],
+    reduced ? [1, 1, 1] : [0.35, 1, 1],
+  );
+
   return (
-    <footer className="w-full bg-white relative overflow-hidden antialiased [font-synthesis:none]">
-      <div className="relative w-full flex justify-center items-end pt-24 md:pt-32 pb-0 z-0">
-        <h1 className="text-[120px] sm:text-[160px] md:text-[210px] font-semibold text-transparent [-webkit-text-stroke:1px_rgba(0,0,0,0.4)] leading-[0.75] select-none -mb-4 md:-mb-6 opacity-50">
-          {companyName}
-        </h1>
+    <footer
+      ref={rootRef}
+      className="w-full bg-white relative overflow-hidden antialiased [font-synthesis:none]"
+    >
+      {/* Animated dots strip — from MotionSites stark-minimal-footer */}
+      <div
+        className="footer-dots relative h-16 md:h-24 overflow-hidden bg-white"
+        aria-hidden="true"
+      >
+        <div className="footer-dots__line absolute left-0 top-1/2 h-14 w-[200%] -translate-y-1/2 opacity-70" />
       </div>
 
-      <div className="relative w-full [--color-primary:#1e3a5f] bg-(--color-primary) text-white z-10 min-h-[400px]">
-        <div className="absolute inset-0 z-0 pointer-events-none">
+      <style>{`
+        .footer-dots__line {
+          background-image:
+            radial-gradient(circle, rgb(30 58 95 / 0.35) 1.5px, transparent 2px),
+            radial-gradient(circle, rgb(193 127 58 / 0.28) 1px, transparent 1.5px),
+            radial-gradient(circle, rgb(30 58 95 / 0.22) 1.2px, transparent 1.8px);
+          background-position: 0 8px, 24px 22px, 48px 14px;
+          background-size: 72px 38px, 110px 44px, 160px 52px;
+          animation: footerDotsMove 18s linear infinite;
+        }
+        @keyframes footerDotsMove {
+          from { transform: translate3d(0, -50%, 0); }
+          to { transform: translate3d(-50%, -50%, 0); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .footer-dots__line { animation: none; }
+        }
+      `}</style>
+
+      <div className="relative w-full flex justify-center items-end pt-16 md:pt-24 pb-0 z-0 overflow-hidden">
+        <motion.h1
+          style={{
+            y: wordmarkY,
+            opacity: wordmarkOpacity,
+            scale: wordmarkScale,
+            color: "#000000",
+          }}
+          className="text-[120px] sm:text-[160px] md:text-[210px] font-bold leading-[0.75] select-none -mb-4 md:-mb-6 will-change-transform"
+        >
+          {companyName}
+        </motion.h1>
+      </div>
+
+      <motion.div
+        style={{ y: panelY }}
+        className="relative w-full [--color-primary:#1e3a5f] bg-(--color-primary) text-white z-10 min-h-[400px] will-change-transform"
+      >
+        <motion.div
+          style={{ opacity: glassOpacity }}
+          className="absolute inset-0 z-0 pointer-events-none"
+        >
           <FlutedGlass
             size={0.89}
             shape="lines"
@@ -119,12 +259,28 @@ export default function FooterSection5() {
             colorShadow="#000000"
             className="w-full h-full bg-transparent"
           />
-        </div>
+        </motion.div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-24 py-16 md:py-24 flex flex-col lg:flex-row justify-between gap-16 lg:gap-8">
-          <div className="flex flex-col justify-between max-w-sm w-full">
+        <motion.div
+          className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-24 py-16 md:py-24 flex flex-col lg:flex-row justify-between gap-16 lg:gap-8"
+          variants={reduced ? undefined : staggerParent}
+          initial={reduced ? false : "hidden"}
+          whileInView={reduced ? undefined : "visible"}
+          viewport={{ once: false, amount: 0.2 }}
+        >
+          <motion.div
+            className="flex flex-col justify-between max-w-sm w-full"
+            variants={fadeLeft}
+          >
             <div className="flex flex-col">
-              <TrinexLogo className="w-28 h-28 shrink-0 mb-3 object-contain drop-shadow-md" />
+              <motion.div
+                variants={fadeUp}
+                whileHover={reduced ? undefined : { scale: 1.04, rotate: -1 }}
+                transition={{ type: "spring", stiffness: 260, damping: 18 }}
+                className="w-fit"
+              >
+                <TrinexLogo className="w-36 h-36 shrink-0 mb-3 object-contain drop-shadow-md" />
+              </motion.div>
               <p className="text-sm text-white/80 mb-3">{CONTACT.tagline}</p>
               <h2 className="text-xl md:text-[22px] font-medium leading-tight text-white">
                 Design → Plan → Visualize
@@ -135,18 +291,25 @@ export default function FooterSection5() {
 
             <div className="flex flex-col gap-3 mt-12 lg:mt-auto pt-8">
               <div className="flex items-center gap-4">
-                {socialIcons.map(({ name, href, Icon }) =>
+                {socialIcons.map(({ name, href, Icon }, i) =>
                   href ? (
-                    <Link
+                    <motion.div
                       key={name}
-                      href={href}
-                      aria-label={name}
-                      target={href.startsWith("http") ? "_blank" : undefined}
-                      rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                      className="!text-white/80 hover:!text-white transition-colors"
+                      variants={linkItem}
+                      custom={i}
+                      whileHover={reduced ? undefined : { y: -3, scale: 1.1 }}
                     >
-                      <Icon className={iconClassName} />
-                    </Link>
+                      <Link
+                        href={href}
+                        aria-label={name}
+                        target={href.startsWith("http") ? "_blank" : undefined}
+                        rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                        className="!text-white/80 hover:!text-white transition-colors inline-flex"
+                        style={{ color: "rgba(255,255,255,0.8)" }}
+                      >
+                        <Icon className={iconClassName} />
+                      </Link>
+                    </motion.div>
                   ) : null,
                 )}
               </div>
@@ -154,59 +317,90 @@ export default function FooterSection5() {
                 © {new Date().getFullYear()} {companyName}, All rights reserved
               </p>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="flex gap-12 md:gap-16 flex-wrap lg:flex-nowrap">
+          <motion.div
+            className="flex gap-12 md:gap-16 flex-wrap lg:flex-nowrap"
+            variants={fadeRight}
+          >
             {footerLinks.map((section) => (
-              <div key={section.title} className="flex flex-col gap-5">
-                <h3 className="font-semibold text-lg md:text-xl text-white">
+              <motion.div
+                key={section.title}
+                className="flex flex-col gap-5"
+                variants={staggerParent}
+              >
+                <motion.h3
+                  className="font-semibold text-lg md:text-xl text-white"
+                  variants={fadeUp}
+                >
                   {section.title}
-                </h3>
+                </motion.h3>
                 <ul className="flex flex-col gap-3 md:gap-4">
                   {section.links.map((link) => (
-                    <li key={link.name}>
+                    <motion.li key={link.name} variants={linkItem}>
                       <Link
                         href={link.href}
-                        className="!text-white/80 hover:!text-white transition-colors text-sm md:text-[15px] font-medium"
+                        className="hover:!text-white transition-colors text-sm md:text-[15px] font-medium inline-block"
+                        style={{ color: "rgba(255,255,255,0.8)" }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.transform = "translateX(4px)";
+                          e.currentTarget.style.color = "#ffffff";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.transform = "translateX(0)";
+                          e.currentTarget.style.color = "rgba(255,255,255,0.8)";
+                        }}
                       >
                         {link.name}
                       </Link>
-                    </li>
+                    </motion.li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
             ))}
 
-            <div className="flex flex-col gap-5 max-w-xs">
+            <motion.div className="flex flex-col gap-5 max-w-xs" variants={fadeUp}>
               <h3 className="font-semibold text-lg md:text-xl text-white">Contact</h3>
               <ul className="flex flex-col gap-3 md:gap-4 text-sm md:text-[15px] font-medium text-white/80">
-                <li>
+                <motion.li variants={linkItem}>
                   <a
                     href={`tel:${CONTACT.phone}`}
-                    className="!text-white/80 hover:!text-white transition-colors"
+                    className="transition-colors"
+                    style={{ color: "rgba(255,255,255,0.8)" }}
                   >
                     {CONTACT.phoneDisplay}
                   </a>
-                </li>
-                <li>
+                </motion.li>
+                <motion.li variants={linkItem}>
                   <a
                     href={`mailto:${CONTACT.email}`}
-                    className="!text-white/80 hover:!text-white transition-colors break-all"
+                    className="transition-colors break-all"
+                    style={{ color: "rgba(255,255,255,0.8)" }}
                   >
                     {CONTACT.email}
                   </a>
-                </li>
-                <li className="leading-relaxed">{CONTACT.address}</li>
-                <li className="leading-relaxed pt-1">
+                </motion.li>
+                <motion.li variants={linkItem} className="leading-relaxed">
+                  <a
+                    href={CONTACT.mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors"
+                    style={{ color: "rgba(255,255,255,0.8)" }}
+                  >
+                    {CONTACT.address}
+                  </a>
+                </motion.li>
+                <motion.li variants={linkItem} className="leading-relaxed pt-1">
                   <span className="block">{CONTACT.hours.weekdays}</span>
                   <span className="block">{CONTACT.hours.saturday}</span>
                   <span className="block">{CONTACT.hours.sunday}</span>
-                </li>
+                </motion.li>
               </ul>
-            </div>
-          </div>
-        </div>
-      </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
     </footer>
   );
 }

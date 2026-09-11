@@ -3,10 +3,13 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import {
-  animate,
   motion,
-  useInView,
+  useMotionValueEvent,
   useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+  type MotionValue,
   type Variants,
 } from "motion/react";
 import { CONTACT } from "@/lib/contact";
@@ -41,37 +44,29 @@ const stats: Stat[] = [
   },
 ];
 
-function AnimatedCounter({
+function ScrollCounter({
   value,
   suffix = "+",
-  active,
+  progress,
 }: {
   value: number;
   suffix?: string;
-  active: boolean;
+  progress: MotionValue<number>;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
   const reduced = useReducedMotion();
+  const raw = useTransform(progress, [0, 0.22, 0.55, 0.82, 1], [0, value, value, value, 0]);
+  const sprung = useSpring(raw, { stiffness: 90, damping: 22, mass: 0.6 });
+
+  useMotionValueEvent(sprung, "change", (latest) => {
+    if (!ref.current) return;
+    ref.current.textContent = Math.round(latest).toLocaleString();
+  });
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    if (reduced || !active) {
-      el.textContent = value.toLocaleString();
-      return;
-    }
-
-    const controls = animate(0, value, {
-      duration: 1.7,
-      ease: [0.16, 1, 0.3, 1],
-      onUpdate: (latest) => {
-        el.textContent = Math.round(latest).toLocaleString();
-      },
-    });
-
-    return () => controls.stop();
-  }, [value, active, reduced]);
+    if (!ref.current) return;
+    ref.current.textContent = reduced ? value.toLocaleString() : "0";
+  }, [value, reduced]);
 
   return (
     <span className="interior-stat-value">
@@ -80,6 +75,61 @@ function AnimatedCounter({
         {suffix}
       </span>
     </span>
+  );
+}
+
+function ScrollStat({
+  stat,
+  index,
+  progress,
+}: {
+  stat: Stat;
+  index: number;
+  progress: MotionValue<number>;
+}) {
+  const reduced = useReducedMotion();
+  const fromX = index % 2 === 0 ? -28 : 28;
+  const y = useTransform(
+    progress,
+    [0, 0.35, 0.7, 1],
+    reduced ? [0, 0, 0, 0] : [48, 0, 0, -28],
+  );
+  const x = useTransform(
+    progress,
+    [0, 0.35, 0.7, 1],
+    reduced ? [0, 0, 0, 0] : [fromX, 0, 0, fromX * -0.35],
+  );
+  const opacity = useTransform(
+    progress,
+    [0, 0.18, 0.72, 1],
+    reduced ? [1, 1, 1, 1] : [0.15, 1, 1, 0.35],
+  );
+  const scale = useTransform(
+    progress,
+    [0, 0.35, 0.7, 1],
+    reduced ? [1, 1, 1, 1] : [0.92, 1, 1, 0.97],
+  );
+  const bar = useTransform(
+    progress,
+    [0.2, 0.45, 0.75, 1],
+    reduced ? [36, 36, 36, 36] : [0, 36, 36, 8],
+  );
+
+  return (
+    <motion.a
+      className="interior-stat"
+      href="/about/"
+      style={{ y, x, opacity, scale }}
+      aria-label={`${stat.value.toLocaleString()}${stat.suffix} ${stat.label}`}
+    >
+      <ScrollCounter value={stat.value} suffix={stat.suffix} progress={progress} />
+      <span className="interior-stat-label">{stat.label}</span>
+      <motion.span
+        className="interior-stat-bar interior-stat-bar--scroll"
+        aria-hidden="true"
+        style={{ width: bar }}
+      />
+    </motion.a>
   );
 }
 
@@ -108,19 +158,13 @@ const stagger: Variants = {
   },
 };
 
-const statItem: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
 export function InteriorAbout() {
   const statsRef = useRef<HTMLDivElement>(null);
-  const statsInView = useInView(statsRef, { once: true, amount: 0.35 });
   const reduced = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: statsRef,
+    offset: ["start end", "end start"],
+  });
 
   return (
     <section className="interior-page" aria-labelledby="about-title" id="about">
@@ -148,15 +192,29 @@ export function InteriorAbout() {
           display: grid;
           grid-template-columns: repeat(3, minmax(0, 1fr));
           gap: 3rem;
-          align-items: center;
+          align-items: stretch;
         }
-        .interior-image-wrap { overflow: hidden; aspect-ratio: 0.93; background: #e8ecf1; border-radius: 2px; box-shadow: 0 18px 48px rgba(26, 35, 50, 0.08); }
+        .interior-image-wrap {
+          overflow: hidden;
+          align-self: stretch;
+          min-height: 100%;
+          height: 100%;
+          background: #e8ecf1;
+          border-radius: 2px;
+          box-shadow: 0 18px 48px rgba(26, 35, 50, 0.08);
+        }
+        .interior-image-wrap > div,
+        .interior-image-wrap > div > div {
+          height: 100%;
+          min-height: 100%;
+        }
         .interior-image-wrap img {
           display: block;
           width: 100%;
-          height: 118%;
-          margin-top: -9%;
+          height: 100%;
+          min-height: 420px;
           object-fit: cover;
+          object-position: center;
           transition: transform .9s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .interior-image-wrap:hover img { transform: scale(1.04); }
@@ -231,7 +289,7 @@ export function InteriorAbout() {
           padding: 0.35rem 2rem 0.35rem 0;
           text-decoration: none;
           color: inherit;
-          transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+          will-change: transform, opacity;
         }
         .interior-stat:not(:last-child)::after {
           content: "";
@@ -242,7 +300,6 @@ export function InteriorAbout() {
           width: 1px;
           background: var(--line);
         }
-        .interior-stat:hover { transform: translateY(-3px); }
         .interior-stat:focus-visible {
           outline: 2px solid var(--accent);
           outline-offset: 6px;
@@ -277,20 +334,19 @@ export function InteriorAbout() {
           text-transform: uppercase;
         }
         .interior-stat-bar {
-          width: 0;
           height: 2px;
           margin-top: 0.15rem;
           background: var(--accent);
-          transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1);
         }
-        .interior-stat:hover .interior-stat-bar,
-        .interior-stat:focus-visible .interior-stat-bar {
-          width: 2.25rem;
+        .interior-stat-bar--scroll {
+          width: 0;
+          display: block;
         }
         @media (max-width: 820px) {
           .interior-page { padding: 4.5rem 1.25rem; }
-          .interior-intro { grid-template-columns: 1fr 1fr; gap: 2.25rem; }
-          .interior-image-wrap { grid-row: span 2; }
+          .interior-intro { grid-template-columns: 1fr 1fr; gap: 2.25rem; align-items: stretch; }
+          .interior-image-wrap { grid-row: span 2; min-height: 100%; height: auto; }
+          .interior-image-wrap img { min-height: 100%; height: 100%; }
           .interior-title { font-size: clamp(2.35rem, 7vw, 3.7rem); }
           .interior-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 2.4rem; }
           .interior-stat { padding-right: 1.25rem; }
@@ -300,7 +356,8 @@ export function InteriorAbout() {
         @media (max-width: 560px) {
           .interior-page { padding: 3.5rem 1.15rem 4rem; }
           .interior-intro { display: flex; flex-direction: column; align-items: stretch; gap: 2.4rem; }
-          .interior-image-wrap { aspect-ratio: 1.18; order: 0; }
+          .interior-image-wrap { aspect-ratio: 4 / 3; order: 0; height: auto; min-height: 0; }
+          .interior-image-wrap img { min-height: 0; height: 100%; }
           .interior-title-block { order: 1; }
           .interior-copy-block { order: 2; }
           .interior-title { max-width: none; font-size: clamp(2.55rem, 13vw, 4rem); }
@@ -320,10 +377,11 @@ export function InteriorAbout() {
         }
         @media (prefers-reduced-motion: reduce) {
           .interior-image-wrap img,
-          .interior-signoff img,
-          .interior-stat,
-          .interior-stat-bar {
+          .interior-signoff img {
             transition: none !important;
+          }
+          .interior-stat {
+            will-change: auto;
           }
         }
       `}</style>
@@ -337,7 +395,7 @@ export function InteriorAbout() {
           viewport={{ once: true, amount: 0.25 }}
         >
           <motion.figure className="interior-image-wrap" variants={fadeLeft}>
-            <Parallax y={40} className="h-full w-full">
+            <Parallax y={28} className="h-full min-h-full w-full">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/featured/living.jpg"
@@ -375,33 +433,20 @@ export function InteriorAbout() {
 
         <div className="interior-rule" aria-hidden="true" />
 
-        <motion.div
+        <div
           ref={statsRef}
           className="interior-stats"
           aria-label="Studio achievements"
-          variants={reduced ? undefined : stagger}
-          initial={reduced ? false : "hidden"}
-          whileInView={reduced ? undefined : "visible"}
-          viewport={{ once: true, amount: 0.35 }}
         >
-          {stats.map((stat) => (
-            <motion.a
+          {stats.map((stat, index) => (
+            <ScrollStat
               key={stat.label}
-              className="interior-stat"
-              href="/about/"
-              variants={statItem}
-              aria-label={`${stat.value.toLocaleString()}${stat.suffix} ${stat.label}`}
-            >
-              <AnimatedCounter
-                value={stat.value}
-                suffix={stat.suffix}
-                active={statsInView}
-              />
-              <span className="interior-stat-label">{stat.label}</span>
-              <span className="interior-stat-bar" aria-hidden="true" />
-            </motion.a>
+              stat={stat}
+              index={index}
+              progress={scrollYProgress}
+            />
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

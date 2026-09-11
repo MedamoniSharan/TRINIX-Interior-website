@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { CONTACT, getWhatsAppUrl } from "@/lib/contact";
 import styles from "./FloatingSidebar.module.css";
 
@@ -10,10 +9,6 @@ const WHATSAPP_MESSAGE =
 export function FloatingSidebar() {
   return (
     <aside className={styles.sidebar} aria-label="Quick contact">
-      <Link href="/contact/" className={styles.quoteBtn}>
-        Get a Free Quote
-      </Link>
-
       <div className={styles.icons}>
         <a
           href={getWhatsAppUrl(WHATSAPP_MESSAGE)}
@@ -52,6 +47,19 @@ export function FloatingSidebar() {
           </a>
         )}
 
+        {CONTACT.linkedin && (
+          <a
+            href={CONTACT.linkedin}
+            className={styles.iconBtn}
+            data-variant="linkedin"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Follow on LinkedIn"
+          >
+            <LinkedInIcon />
+          </a>
+        )}
+
         <a
           href={`tel:${CONTACT.phone}`}
           className={styles.iconBtn}
@@ -85,6 +93,14 @@ function FacebookIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden fill="currentColor">
       <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+    </svg>
+  );
+}
+
+function LinkedInIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden fill="currentColor">
+      <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.73V1.73C24 .77 23.21 0 22.23 0z" />
     </svg>
   );
 }

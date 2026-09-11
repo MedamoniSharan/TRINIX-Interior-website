@@ -7,7 +7,7 @@ import shell from "../page-shell.module.css";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Explore TRINEX services — turnkey interiors, residential and commercial design, 3D visualization, technical drawings, and project management.",
+    "Explore TRINEX services — architectural design, structural design, residential and commercial interiors, construction, turnkey projects, and project management.",
 };
 
 export default function ServicesPage() {

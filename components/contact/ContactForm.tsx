@@ -12,11 +12,13 @@ import {
 import styles from "./ContactForm.module.css";
 
 const PROJECT_TYPES = [
-  "Residential",
-  "Commercial",
-  "Turnkey Interior",
-  "3D Visualization Only",
-  "Design Support / Drawings",
+  "Architectural Services",
+  "Structural Design Services",
+  "Residential Interior Design and Projects",
+  "Commercial Interiors and Projects",
+  "All Kinds of Construction Activities",
+  "Turnkey Projects",
+  "Project Management Services",
   "Other",
 ];
 
@@ -25,12 +27,20 @@ export function ContactForm() {
   const defaultType = searchParams.get("type") ?? "";
   const normalizedType =
     defaultType === "residential"
-      ? "Residential"
+      ? "Residential Interior Design and Projects"
       : defaultType === "commercial"
-        ? "Commercial"
+        ? "Commercial Interiors and Projects"
         : defaultType === "turnkey"
-          ? "Turnkey Interior"
-          : "";
+          ? "Turnkey Projects"
+          : defaultType === "architectural"
+            ? "Architectural Services"
+            : defaultType === "structural"
+              ? "Structural Design Services"
+              : defaultType === "construction"
+                ? "All Kinds of Construction Activities"
+                : defaultType === "management"
+                  ? "Project Management Services"
+                  : "";
 
   const [form, setForm] = useState({
     name: "",

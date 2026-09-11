@@ -11,6 +11,10 @@ export const metadata: Metadata = {
     "Book a free consultation with TRINEX. Call 7659870346 or visit our studio in Vanasthalipuram, Hyderabad.",
 };
 
+const MAP_EMBED_SRC = `https://www.google.com/maps?q=${encodeURIComponent(
+  CONTACT.address,
+)}&z=16&output=embed`;
+
 export default function ContactPage() {
   return (
     <div className={`section ${shell.page}`}>
@@ -35,7 +39,21 @@ export default function ContactPage() {
               </li>
               <li>
                 <strong>Address</strong>
-                <span>{CONTACT.address}</span>
+                <a
+                  href={CONTACT.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {CONTACT.address}
+                </a>
+                <a
+                  href={CONTACT.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.mapLink}
+                >
+                  Open in Google Maps →
+                </a>
               </li>
             </ul>
 
@@ -54,6 +72,29 @@ export default function ContactPage() {
             </Suspense>
           </div>
         </div>
+
+        <section className={styles.mapSection} aria-labelledby="location-heading">
+          <div className={styles.mapHeader}>
+            <h2 id="location-heading">Our Location</h2>
+            <a
+              href={CONTACT.mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.mapLink}
+            >
+              Get directions →
+            </a>
+          </div>
+          <div className={styles.mapFrame}>
+            <iframe
+              title="TRINEX studio location on Google Maps"
+              src={MAP_EMBED_SRC}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+          </div>
+        </section>
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import { Hero } from "@/components/home/Hero";
 import { InteriorAbout } from "@/components/home/InteriorAbout";
 import { ProcessMarquee } from "@/components/home/ProcessMarquee";
-import { Testimonials } from "@/components/home/Testimonials";
+import { InteriorQualitySection } from "@/components/home/InteriorQualitySection";
 import { PortfolioPreview } from "@/components/home/PortfolioPreview";
 import SqueezeCarouselSection from "@/components/home/SqueezeCarouselSection";
 import { BeforeAfterDesign } from "@/components/home/BeforeAfterDesign";
@@ -9,7 +9,6 @@ import { FaqAccordion } from "@/components/home/FaqAccordion";
 import {
   getFaqs,
   getPortfolio,
-  getTestimonials,
 } from "@/lib/content";
 
 export default function HomePage() {
@@ -18,9 +17,9 @@ export default function HomePage() {
       <Hero />
       <InteriorAbout />
       <ProcessMarquee />
+      <InteriorQualitySection />
       <SqueezeCarouselSection />
       <BeforeAfterDesign />
-      <Testimonials items={getTestimonials()} />
       <PortfolioPreview items={getPortfolio()} />
       <FaqAccordion items={getFaqs()} />
     </div>

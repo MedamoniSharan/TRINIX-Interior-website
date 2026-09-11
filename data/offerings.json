@@ -1,38 +1,44 @@
 [
   {
-    "slug": "turnkey-interiors",
-    "title": "Turnkey Interiors",
-    "description": "Complete design-to-execution solutions from concept to handover.",
-    "href": "/services/turnkey-interior-projects/"
+    "slug": "architectural-services",
+    "title": "Architectural Services",
+    "description": "Planning, concept development, and design documentation for your building.",
+    "href": "/services/architectural-services/"
+  },
+  {
+    "slug": "structural-design",
+    "title": "Structural Design",
+    "description": "Structural detailing and drawing support for safe, buildable frameworks.",
+    "href": "/services/structural-design-services/"
   },
   {
     "slug": "residential",
-    "title": "Residential Design",
-    "description": "Tailored home interiors with coordinated planning and execution.",
-    "href": "/services/residential-interior-design/"
+    "title": "Residential Interiors",
+    "description": "Home interior design and projects from layout to final handover.",
+    "href": "/services/residential-interior-design-projects/"
   },
   {
     "slug": "commercial",
-    "title": "Commercial Projects",
-    "description": "Functional commercial spaces designed for brand and productivity.",
-    "href": "/services/commercial-interior-projects/"
+    "title": "Commercial Interiors",
+    "description": "Office, retail, and commercial fit-outs built around brand and function.",
+    "href": "/services/commercial-interiors-projects/"
   },
   {
-    "slug": "modular-furniture",
-    "title": "Modular & Custom Furniture",
-    "description": "Bespoke furniture solutions designed for your exact space.",
-    "href": "/services/modular-custom-furniture/"
+    "slug": "construction",
+    "title": "Construction Activities",
+    "description": "On-site construction coordination across civil and finishing works.",
+    "href": "/services/construction-activities/"
   },
   {
-    "slug": "3d-visualization",
-    "title": "3D Visualization",
-    "description": "Photorealistic renders to visualize your project before build.",
-    "href": "/services/3d-visualization/"
+    "slug": "turnkey",
+    "title": "Turnkey Projects",
+    "description": "Complete design-to-handover delivery under one coordinated team.",
+    "href": "/services/turnkey-projects/"
   },
   {
-    "slug": "space-planning",
-    "title": "Space Planning & Design",
-    "description": "Optimized layouts that maximize usability and aesthetic appeal.",
-    "href": "/services/space-planning/"
+    "slug": "project-management",
+    "title": "Project Management",
+    "description": "Timelines, vendors, and quality control managed end to end.",
+    "href": "/services/project-management-services/"
   }
 ]

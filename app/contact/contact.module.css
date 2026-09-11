@@ -68,9 +68,61 @@
   box-shadow: var(--shadow-card);
 }
 
+.mapLink {
+  font-size: var(--font-size-sm) !important;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-accent) !important;
+  margin-top: 4px;
+}
+
+.mapLink:hover {
+  color: var(--color-accent-hover) !important;
+}
+
+.mapSection {
+  margin-top: 48px;
+}
+
+.mapHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.mapHeader h2 {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  color: var(--color-brand);
+}
+
+.mapFrame {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-subtle);
+  box-shadow: var(--shadow-card);
+  background: var(--color-surface-muted);
+  aspect-ratio: 21 / 9;
+  min-height: 280px;
+}
+
+.mapFrame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 @media (max-width: 768px) {
   .layout {
     grid-template-columns: 1fr;
     gap: 32px;
+  }
+
+  .mapFrame {
+    aspect-ratio: 4 / 3;
+    min-height: 240px;
   }
 }

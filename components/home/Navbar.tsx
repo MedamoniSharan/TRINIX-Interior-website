@@ -28,10 +28,10 @@ export const Navbar = forwardRef<HTMLElement>(function Navbar(_, ref) {
   return (
     <nav
       ref={ref}
-      className="flex items-center justify-between py-4 md:py-5 px-6 md:px-10 w-full relative z-10"
+      className="flex items-center justify-between py-3 md:py-4 px-6 md:px-10 w-full relative z-10"
     >
       <div className="flex-1 flex justify-start">
-        <Logo height={64} />
+        <Logo height={96} />
       </div>
 
       <ul className="hidden md:flex items-center gap-8 text-[rgb(45,45,45)] font-normal text-sm">

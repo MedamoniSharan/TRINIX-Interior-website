@@ -74,6 +74,7 @@ export type SiteContact = {
   phoneDisplay: string;
   email: string;
   address: string;
+  mapsUrl: string;
   hours: {
     weekdays: string;
     saturday: string;
@@ -83,4 +84,5 @@ export type SiteContact = {
   whatsappPhone: string;
   instagram?: string;
   facebook?: string;
+  linkedin?: string;
 };

@@ -1,121 +1,51 @@
 [
   {
-    "slug": "turnkey-interior-projects",
-    "title": "Turnkey Interior Projects",
-    "group": "Turnkey & Execution",
-    "description": "Complete design-to-execution solutions from concept development through material selection, finishing, and handover.",
-    "icon": "turnkey"
-  },
-  {
-    "slug": "complete-design-to-execution",
-    "title": "Complete Design-to-Execution Solutions",
-    "group": "Turnkey & Execution",
-    "description": "End-to-end interior and design consultancy covering concept, documentation, coordination, execution, and project handover.",
-    "icon": "turnkey"
-  },
-  {
-    "slug": "project-management",
-    "title": "Project Management",
-    "group": "Turnkey & Execution",
-    "description": "End-to-end coordination of timelines, vendors, and on-site execution for seamless project delivery.",
-    "icon": "management"
-  },
-  {
-    "slug": "material-coordination",
-    "title": "Material & Execution Coordination",
-    "group": "Turnkey & Execution",
-    "description": "Sourcing, scheduling, and quality control of materials aligned with design specifications and budget.",
-    "icon": "materials"
-  },
-  {
-    "slug": "residential-interior-design",
-    "title": "Residential Interior Design & Execution",
-    "group": "Residential & Commercial",
-    "description": "Tailored residential interiors with practical layouts, premium finishes, and coordinated execution.",
-    "icon": "residential"
-  },
-  {
-    "slug": "commercial-interior-projects",
-    "title": "Commercial Interior Projects",
-    "group": "Residential & Commercial",
-    "description": "Functional and brand-aligned commercial spaces designed for productivity and client experience.",
-    "icon": "commercial"
-  },
-  {
-    "slug": "modular-custom-furniture",
-    "title": "Modular & Custom Furniture",
-    "group": "Residential & Commercial",
-    "description": "Bespoke modular and custom furniture designed to fit your space perfectly.",
-    "icon": "furniture"
-  },
-  {
-    "slug": "space-planning",
-    "title": "Space Planning & Design",
-    "group": "Residential & Commercial",
-    "description": "Optimized floor plans and spatial layouts that maximize usability and aesthetic appeal.",
-    "icon": "planning"
-  },
-  {
-    "slug": "architectural-design",
-    "title": "Architectural Design & Floor Plans",
-    "group": "Design & Visualization",
-    "description": "Architectural planning and detailed floor plans for residential and commercial projects.",
+    "slug": "architectural-services",
+    "title": "Architectural Services",
+    "group": "Design",
+    "description": "Complete architectural planning, concept development, and design documentation for residential and commercial buildings.",
     "icon": "architecture"
   },
   {
-    "slug": "3d-visualization",
-    "title": "3D Interior & Exterior Visualization",
-    "group": "Design & Visualization",
-    "description": "Photorealistic 3D renders that help you visualize spaces before construction begins.",
-    "icon": "3d"
-  },
-  {
-    "slug": "front-elevation-design",
-    "title": "Front Elevation Design",
-    "group": "Design & Visualization",
-    "description": "Striking facade and elevation designs that define the character of your building.",
-    "icon": "elevation"
-  },
-  {
-    "slug": "electrical-plumbing-layouts",
-    "title": "Electrical & Plumbing Layouts",
-    "group": "Technical & Engineering",
-    "description": "Precise MEP layout drawings for safe, efficient, and code-compliant installations.",
-    "icon": "mep"
-  },
-  {
-    "slug": "false-ceiling-lighting",
-    "title": "False Ceiling & Lighting",
-    "group": "Technical & Engineering",
-    "description": "Custom false ceiling designs integrated with ambient and task lighting solutions.",
-    "icon": "ceiling"
-  },
-  {
-    "slug": "flooring-wall-finishes",
-    "title": "Flooring & Wall Finishes",
-    "group": "Technical & Engineering",
-    "description": "Curated flooring, wall treatments, and finish selections for cohesive interiors.",
-    "icon": "finishes"
-  },
-  {
-    "slug": "working-drawings",
-    "title": "Joinery & Detailed Working Drawings",
-    "group": "Technical & Engineering",
-    "description": "Detailed joinery and fabrication drawings for accurate on-site execution.",
-    "icon": "drawings"
-  },
-  {
-    "slug": "project-estimation-boq",
-    "title": "Project Estimation & BOQ",
-    "group": "Technical & Engineering",
-    "description": "Transparent cost estimates and bill of quantities for informed project planning.",
-    "icon": "boq"
-  },
-  {
-    "slug": "structural-mep-drawings",
-    "title": "Structural & MEP Drawing Support",
-    "group": "Technical & Engineering",
-    "description": "Technical drawing support for structural and MEP coordination with design teams.",
+    "slug": "structural-design-services",
+    "title": "Structural Design Services",
+    "group": "Design",
+    "description": "Structural analysis, detailing, and drawing support for safe, efficient, and buildable project frameworks.",
     "icon": "structural"
+  },
+  {
+    "slug": "residential-interior-design-projects",
+    "title": "Residential Interior Design and Projects",
+    "group": "Interiors",
+    "description": "End-to-end residential interior design and execution — from layout and finishes to furniture and handover.",
+    "icon": "residential"
+  },
+  {
+    "slug": "commercial-interiors-projects",
+    "title": "Commercial Interiors and Projects",
+    "group": "Interiors",
+    "description": "Commercial interior design and fit-outs for offices, retail, and business spaces built around brand and function.",
+    "icon": "commercial"
+  },
+  {
+    "slug": "construction-activities",
+    "title": "All Kinds of Construction Activities",
+    "group": "Execution",
+    "description": "On-site construction coordination and execution across civil, finishing, and related project activities.",
+    "icon": "materials"
+  },
+  {
+    "slug": "turnkey-projects",
+    "title": "Turnkey Projects",
+    "group": "Execution",
+    "description": "Complete turnkey delivery from design and planning through execution, finishing, and project handover.",
+    "icon": "turnkey"
+  },
+  {
+    "slug": "project-management-services",
+    "title": "Project Management Services",
+    "group": "Execution",
+    "description": "Professional project management covering timelines, vendors, quality control, and coordinated delivery.",
+    "icon": "management"
   }
 ]
