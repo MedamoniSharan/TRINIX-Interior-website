@@ -4,48 +4,62 @@
     "title": "Architectural Services",
     "group": "Design",
     "description": "Complete architectural planning, concept development, and design documentation for residential and commercial buildings.",
-    "icon": "architecture"
+    "icon": "architecture",
+    "image": "/images/services/architectural.jpg",
+    "imageAlt": "Modern architectural building facade with clean geometric lines"
   },
   {
     "slug": "structural-design-services",
     "title": "Structural Design Services",
     "group": "Design",
     "description": "Structural analysis, detailing, and drawing support for safe, efficient, and buildable project frameworks.",
-    "icon": "structural"
+    "icon": "structural",
+    "image": "/images/services/structural.jpg",
+    "imageAlt": "Structural steel framework under construction"
   },
   {
     "slug": "residential-interior-design-projects",
     "title": "Residential Interior Design and Projects",
     "group": "Interiors",
     "description": "End-to-end residential interior design and execution — from layout and finishes to furniture and handover.",
-    "icon": "residential"
+    "icon": "residential",
+    "image": "/images/services/residential.jpg",
+    "imageAlt": "Finished residential living room with warm modern interiors"
   },
   {
     "slug": "commercial-interiors-projects",
     "title": "Commercial Interiors and Projects",
     "group": "Interiors",
     "description": "Commercial interior design and fit-outs for offices, retail, and business spaces built around brand and function.",
-    "icon": "commercial"
+    "icon": "commercial",
+    "image": "/images/services/commercial.jpg",
+    "imageAlt": "Open commercial office interior with desks and natural light"
   },
   {
     "slug": "construction-activities",
     "title": "All Kinds of Construction Activities",
     "group": "Execution",
     "description": "On-site construction coordination and execution across civil, finishing, and related project activities.",
-    "icon": "materials"
+    "icon": "materials",
+    "image": "/images/services/construction.jpg",
+    "imageAlt": "Active construction site with workers and scaffolding"
   },
   {
     "slug": "turnkey-projects",
     "title": "Turnkey Projects",
     "group": "Execution",
     "description": "Complete turnkey delivery from design and planning through execution, finishing, and project handover.",
-    "icon": "turnkey"
+    "icon": "turnkey",
+    "image": "/images/services/turnkey.jpg",
+    "imageAlt": "Completed turnkey home interior ready for handover"
   },
   {
     "slug": "project-management-services",
     "title": "Project Management Services",
     "group": "Execution",
     "description": "Professional project management covering timelines, vendors, quality control, and coordinated delivery.",
-    "icon": "management"
+    "icon": "management",
+    "image": "/images/services/project-management.jpg",
+    "imageAlt": "Project planning documents, laptop, and coordination workspace"
   }
 ]

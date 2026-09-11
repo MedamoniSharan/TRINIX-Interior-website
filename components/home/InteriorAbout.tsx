@@ -1,137 +1,13 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import Link from "next/link";
 import {
   motion,
-  useMotionValueEvent,
   useReducedMotion,
-  useScroll,
-  useSpring,
-  useTransform,
-  type MotionValue,
   type Variants,
 } from "motion/react";
 import { CONTACT } from "@/lib/contact";
 import { Parallax } from "@/components/motion/Reveal";
-
-interface Stat {
-  value: number;
-  label: string;
-  suffix: string;
-}
-
-const stats: Stat[] = [
-  {
-    value: 65250,
-    label: "Design Hours Completed",
-    suffix: "+",
-  },
-  {
-    value: 23160,
-    label: "Satisfied Clients",
-    suffix: "+",
-  },
-  {
-    value: 150,
-    label: "Awards Winning",
-    suffix: "+",
-  },
-  {
-    value: 20,
-    label: "Years of Design Experience",
-    suffix: "+",
-  },
-];
-
-function ScrollCounter({
-  value,
-  suffix = "+",
-  progress,
-}: {
-  value: number;
-  suffix?: string;
-  progress: MotionValue<number>;
-}) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const reduced = useReducedMotion();
-  const raw = useTransform(progress, [0, 0.22, 0.55, 0.82, 1], [0, value, value, value, 0]);
-  const sprung = useSpring(raw, { stiffness: 90, damping: 22, mass: 0.6 });
-
-  useMotionValueEvent(sprung, "change", (latest) => {
-    if (!ref.current) return;
-    ref.current.textContent = Math.round(latest).toLocaleString();
-  });
-
-  useEffect(() => {
-    if (!ref.current) return;
-    ref.current.textContent = reduced ? value.toLocaleString() : "0";
-  }, [value, reduced]);
-
-  return (
-    <span className="interior-stat-value">
-      <span ref={ref}>0</span>
-      <span className="interior-stat-suffix" aria-hidden="true">
-        {suffix}
-      </span>
-    </span>
-  );
-}
-
-function ScrollStat({
-  stat,
-  index,
-  progress,
-}: {
-  stat: Stat;
-  index: number;
-  progress: MotionValue<number>;
-}) {
-  const reduced = useReducedMotion();
-  const fromX = index % 2 === 0 ? -28 : 28;
-  const y = useTransform(
-    progress,
-    [0, 0.35, 0.7, 1],
-    reduced ? [0, 0, 0, 0] : [48, 0, 0, -28],
-  );
-  const x = useTransform(
-    progress,
-    [0, 0.35, 0.7, 1],
-    reduced ? [0, 0, 0, 0] : [fromX, 0, 0, fromX * -0.35],
-  );
-  const opacity = useTransform(
-    progress,
-    [0, 0.18, 0.72, 1],
-    reduced ? [1, 1, 1, 1] : [0.15, 1, 1, 0.35],
-  );
-  const scale = useTransform(
-    progress,
-    [0, 0.35, 0.7, 1],
-    reduced ? [1, 1, 1, 1] : [0.92, 1, 1, 0.97],
-  );
-  const bar = useTransform(
-    progress,
-    [0.2, 0.45, 0.75, 1],
-    reduced ? [36, 36, 36, 36] : [0, 36, 36, 8],
-  );
-
-  return (
-    <motion.a
-      className="interior-stat"
-      href="/about/"
-      style={{ y, x, opacity, scale }}
-      aria-label={`${stat.value.toLocaleString()}${stat.suffix} ${stat.label}`}
-    >
-      <ScrollCounter value={stat.value} suffix={stat.suffix} progress={progress} />
-      <span className="interior-stat-label">{stat.label}</span>
-      <motion.span
-        className="interior-stat-bar interior-stat-bar--scroll"
-        aria-hidden="true"
-        style={{ width: bar }}
-      />
-    </motion.a>
-  );
-}
 
 const fadeLeft: Variants = {
   hidden: { opacity: 0, x: -36 },
@@ -159,12 +35,7 @@ const stagger: Variants = {
 };
 
 export function InteriorAbout() {
-  const statsRef = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: statsRef,
-    offset: ["start end", "end start"],
-  });
 
   return (
     <section className="interior-page" aria-labelledby="about-title" id="about">
@@ -269,89 +140,12 @@ export function InteriorAbout() {
           letter-spacing: .18em;
           text-transform: uppercase;
         }
-        .interior-rule {
-          position: relative;
-          height: 1px;
-          margin: 5.5rem 0 3.4rem;
-          background: linear-gradient(90deg, transparent, var(--line) 12%, var(--line) 88%, transparent);
-        }
-        .interior-stats {
-          display: grid;
-          grid-template-columns: repeat(4, minmax(0, 1fr));
-          gap: 0;
-        }
-        .interior-stat {
-          position: relative;
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 0.85rem;
-          padding: 0.35rem 2rem 0.35rem 0;
-          text-decoration: none;
-          color: inherit;
-          will-change: transform, opacity;
-        }
-        .interior-stat:not(:last-child)::after {
-          content: "";
-          position: absolute;
-          top: 12%;
-          right: 0;
-          bottom: 12%;
-          width: 1px;
-          background: var(--line);
-        }
-        .interior-stat:focus-visible {
-          outline: 2px solid var(--accent);
-          outline-offset: 6px;
-        }
-        .interior-stat-value {
-          display: inline-flex;
-          align-items: flex-start;
-          font-family: var(--serif);
-          font-size: clamp(2.35rem, 3.4vw, 3.35rem);
-          font-weight: 400;
-          letter-spacing: -.04em;
-          line-height: 0.95;
-          color: var(--ink);
-          font-variant-numeric: tabular-nums;
-        }
-        .interior-stat-suffix {
-          margin-left: 0.12em;
-          font-family: var(--font-helvetica), ui-sans-serif, system-ui, sans-serif;
-          font-size: 0.58em;
-          font-weight: 300;
-          line-height: 1;
-          color: var(--accent);
-          transform: translateY(0.18em);
-        }
-        .interior-stat-label {
-          max-width: 11rem;
-          color: var(--muted-ink);
-          font-size: 0.72rem;
-          font-weight: 600;
-          letter-spacing: 0.14em;
-          line-height: 1.55;
-          text-transform: uppercase;
-        }
-        .interior-stat-bar {
-          height: 2px;
-          margin-top: 0.15rem;
-          background: var(--accent);
-        }
-        .interior-stat-bar--scroll {
-          width: 0;
-          display: block;
-        }
         @media (max-width: 820px) {
           .interior-page { padding: 4.5rem 1.25rem; }
           .interior-intro { grid-template-columns: 1fr 1fr; gap: 2.25rem; align-items: stretch; }
           .interior-image-wrap { grid-row: span 2; min-height: 100%; height: auto; }
           .interior-image-wrap img { min-height: 100%; height: 100%; }
           .interior-title { font-size: clamp(2.35rem, 7vw, 3.7rem); }
-          .interior-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 2.4rem; }
-          .interior-stat { padding-right: 1.25rem; }
-          .interior-stat:nth-child(2n)::after { display: none; }
-          .interior-stat:nth-child(-n+2) { padding-bottom: 0.5rem; }
         }
         @media (max-width: 560px) {
           .interior-page { padding: 3.5rem 1.15rem 4rem; }
@@ -362,26 +156,11 @@ export function InteriorAbout() {
           .interior-copy-block { order: 2; }
           .interior-title { max-width: none; font-size: clamp(2.55rem, 13vw, 4rem); }
           .interior-copy { max-width: none; }
-          .interior-rule { margin: 3.8rem 0 2.3rem; }
-          .interior-stats { gap: 0; }
-          .interior-stat {
-            padding: 1.35rem 1rem 1.35rem 0;
-          }
-          .interior-stat::after { display: none !important; }
-          .interior-stat:nth-child(odd) {
-            border-right: 1px solid var(--line);
-          }
-          .interior-stat:nth-child(-n+2) {
-            border-bottom: 1px solid var(--line);
-          }
         }
         @media (prefers-reduced-motion: reduce) {
           .interior-image-wrap img,
           .interior-signoff img {
             transition: none !important;
-          }
-          .interior-stat {
-            will-change: auto;
           }
         }
       `}</style>
@@ -430,23 +209,6 @@ export function InteriorAbout() {
             </div>
           </motion.div>
         </motion.div>
-
-        <div className="interior-rule" aria-hidden="true" />
-
-        <div
-          ref={statsRef}
-          className="interior-stats"
-          aria-label="Studio achievements"
-        >
-          {stats.map((stat, index) => (
-            <ScrollStat
-              key={stat.label}
-              stat={stat}
-              index={index}
-              progress={scrollYProgress}
-            />
-          ))}
-        </div>
       </div>
     </section>
   );

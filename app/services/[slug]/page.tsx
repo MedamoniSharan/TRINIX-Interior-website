@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { getServiceBySlug, getServices } from "@/lib/content";
 import shell from "../../page-shell.module.css";
+import styles from "../service-detail.module.css";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -35,10 +37,33 @@ export default async function ServiceDetailPage({ params }: Props) {
           <Link href="/services/">← All Services</Link>
         </nav>
 
+        <div className={styles.hero}>
+          {service.video ? (
+            <video
+              className={styles.media}
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster={service.image}
+              aria-label={service.imageAlt}
+            >
+              <source src={service.video} type="video/mp4" />
+            </video>
+          ) : (
+            <Image
+              src={service.image}
+              alt={service.imageAlt}
+              fill
+              priority
+              sizes="(max-width: 900px) 100vw, 1100px"
+              className={styles.image}
+            />
+          )}
+        </div>
+
         <header className={shell.header}>
-          <p style={{ margin: "0 0 8px", color: "var(--color-accent)", fontWeight: 600, fontSize: 14 }}>
-            {service.group}
-          </p>
+          <p className={styles.group}>{service.group}</p>
           <h1>{service.title}</h1>
           <p>{service.description}</p>
         </header>
@@ -56,7 +81,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             execution, TRINEX adapts to your project requirements.
           </p>
 
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 32 }}>
+          <div className={styles.actions}>
             <Button href="/contact/" variant="primary">
               Request Consultation
             </Button>

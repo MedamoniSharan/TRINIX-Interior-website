@@ -11,7 +11,6 @@ import {
 import { BottomLeftCard } from "./BottomLeftCard";
 import { BottomRightCorner } from "./BottomRightCorner";
 import { HeroBadge } from "./HeroBadge";
-import { HeroCanvas } from "./HeroCanvas";
 import { Navbar } from "./Navbar";
 
 const VIDEO_SRC =
@@ -86,7 +85,7 @@ export function Hero() {
         tl.fromTo(
           subtitleRef.current,
           { opacity: 0 },
-          { opacity: 0.8, duration: 0.8 },
+          { opacity: 1, duration: 0.8 },
           "-=0.5",
         );
       }
@@ -128,7 +127,10 @@ export function Hero() {
           <source src={VIDEO_SRC} type="video/mp4" />
         </motion.video>
 
-        <HeroCanvas />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 z-[1] h-[55%] bg-gradient-to-b from-white/70 via-white/35 to-transparent"
+        />
 
         <motion.div
           style={{ y: contentY, opacity: contentOpacity }}
@@ -140,13 +142,13 @@ export function Hero() {
             <HeroBadge ref={badgeRef} />
             <h1
               ref={titleRef}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] font-normal text-[#5E6470] mb-2 tracking-tight leading-[1.05]"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] font-normal text-[#1a2332] mb-2 tracking-tight leading-[1.05] [text-shadow:0_1px_24px_rgba(255,255,255,0.55)]"
             >
               Spaces, Designed Fully
             </h1>
             <p
               ref={subtitleRef}
-              className="text-sm sm:text-base md:text-lg text-[#5E6470] opacity-80 leading-relaxed max-w-xl font-normal"
+              className="text-sm sm:text-base md:text-lg text-[#1a2332]/90 leading-relaxed max-w-xl font-normal [text-shadow:0_1px_18px_rgba(255,255,255,0.65)]"
             >
               From 3D visualization to turnkey execution — residential and
               commercial interiors in Hyderabad, planned and finished under one

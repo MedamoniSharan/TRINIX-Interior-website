@@ -19,6 +19,11 @@ export const CONTACT: SiteContact = {
     "https://www.linkedin.com/in/trinex-by-trinath-design-studio-05181a319",
 };
 
+export const MAP_EMBED_SRC = `https://www.google.com/maps?q=${encodeURIComponent(
+  CONTACT.address,
+)}&z=16&output=embed`;
+
+
 export function buildConsultationMessage(fields: {
   name: string;
   phone: string;

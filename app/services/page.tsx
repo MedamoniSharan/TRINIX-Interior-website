@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { getServiceGroups } from "@/lib/content";
 import styles from "./services.module.css";
@@ -35,9 +36,20 @@ export default function ServicesPage() {
                     href={`/services/${service.slug}/`}
                     className={styles.card}
                   >
-                    <h3>{service.title}</h3>
-                    <p>{service.description}</p>
-                    <span>Learn more →</span>
+                    <div className={styles.media}>
+                      <Image
+                        src={service.image}
+                        alt={service.imageAlt}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className={styles.image}
+                      />
+                    </div>
+                    <div className={styles.body}>
+                      <h3>{service.title}</h3>
+                      <p>{service.description}</p>
+                      <span>Learn more →</span>
+                    </div>
                   </Link>
                 ))}
               </div>

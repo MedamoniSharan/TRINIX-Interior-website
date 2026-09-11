@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { ContactForm } from "@/components/contact/ContactForm";
-import { CONTACT } from "@/lib/contact";
+import { CONTACT, MAP_EMBED_SRC } from "@/lib/contact";
 import shell from "../page-shell.module.css";
 import styles from "./contact.module.css";
 
@@ -10,10 +10,6 @@ export const metadata: Metadata = {
   description:
     "Book a free consultation with TRINEX. Call 7659870346 or visit our studio in Vanasthalipuram, Hyderabad.",
 };
-
-const MAP_EMBED_SRC = `https://www.google.com/maps?q=${encodeURIComponent(
-  CONTACT.address,
-)}&z=16&output=embed`;
 
 export default function ContactPage() {
   return (

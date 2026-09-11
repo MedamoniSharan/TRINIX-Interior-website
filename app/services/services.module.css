@@ -21,7 +21,7 @@
 .card {
   display: flex;
   flex-direction: column;
-  padding: 24px;
+  overflow: hidden;
   background: var(--color-surface-base);
   border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-lg);
@@ -32,6 +32,29 @@
 .card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-elevated);
+}
+
+.card:hover .image {
+  transform: scale(1.04);
+}
+
+.media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--color-surface-muted, #e8e4dc);
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px 22px 24px;
 }
 
 .card h3 {

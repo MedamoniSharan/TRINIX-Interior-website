@@ -3,42 +3,49 @@
     "slug": "architectural-services",
     "title": "Architectural Services",
     "description": "Planning, concept development, and design documentation for your building.",
-    "href": "/services/architectural-services/"
+    "href": "/services/architectural-services/",
+    "image": "/images/services/architectural.jpg"
   },
   {
     "slug": "structural-design",
     "title": "Structural Design",
     "description": "Structural detailing and drawing support for safe, buildable frameworks.",
-    "href": "/services/structural-design-services/"
+    "href": "/services/structural-design-services/",
+    "image": "/images/services/structural.jpg"
   },
   {
     "slug": "residential",
     "title": "Residential Interiors",
     "description": "Home interior design and projects from layout to final handover.",
-    "href": "/services/residential-interior-design-projects/"
+    "href": "/services/residential-interior-design-projects/",
+    "image": "/images/services/residential.jpg"
   },
   {
     "slug": "commercial",
     "title": "Commercial Interiors",
     "description": "Office, retail, and commercial fit-outs built around brand and function.",
-    "href": "/services/commercial-interiors-projects/"
+    "href": "/services/commercial-interiors-projects/",
+    "image": "/images/services/commercial.jpg"
   },
   {
     "slug": "construction",
     "title": "Construction Activities",
     "description": "On-site construction coordination across civil and finishing works.",
-    "href": "/services/construction-activities/"
+    "href": "/services/construction-activities/",
+    "image": "/images/services/construction.jpg"
   },
   {
     "slug": "turnkey",
     "title": "Turnkey Projects",
     "description": "Complete design-to-handover delivery under one coordinated team.",
-    "href": "/services/turnkey-projects/"
+    "href": "/services/turnkey-projects/",
+    "image": "/images/services/turnkey.jpg"
   },
   {
     "slug": "project-management",
     "title": "Project Management",
     "description": "Timelines, vendors, and quality control managed end to end.",
-    "href": "/services/project-management-services/"
+    "href": "/services/project-management-services/",
+    "image": "/images/services/project-management.jpg"
   }
 ]

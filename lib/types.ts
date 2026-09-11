@@ -4,6 +4,9 @@ export type Service = {
   group: string;
   description: string;
   icon: string;
+  image: string;
+  imageAlt: string;
+  video?: string;
 };
 
 export type Offering = {
@@ -11,6 +14,7 @@ export type Offering = {
   title: string;
   description: string;
   href: string;
+  image?: string;
 };
 
 export type DesignCategory = {
