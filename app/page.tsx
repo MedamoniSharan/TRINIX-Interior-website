@@ -2,6 +2,7 @@ import { Hero } from "@/components/home/Hero";
 import { InteriorAbout } from "@/components/home/InteriorAbout";
 import { InteriorFunFacts } from "@/components/home/InteriorFunFacts";
 import { ProcessMarquee } from "@/components/home/ProcessMarquee";
+import { HowWeWork } from "@/components/home/HowWeWork";
 import { InteriorQualitySection } from "@/components/home/InteriorQualitySection";
 import { PortfolioPreview } from "@/components/home/PortfolioPreview";
 import SqueezeCarouselSection from "@/components/home/SqueezeCarouselSection";
@@ -20,6 +21,7 @@ export default function HomePage() {
       <InteriorAbout />
       <InteriorFunFacts />
       <ProcessMarquee />
+      <HowWeWork />
       <InteriorQualitySection />
       <SqueezeCarouselSection />
       <BeforeAfterDesign />
