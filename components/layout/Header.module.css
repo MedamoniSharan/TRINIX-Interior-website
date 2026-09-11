@@ -22,6 +22,16 @@
   flex-wrap: wrap;
 }
 
+@media (max-width: 640px) {
+  .topBar span {
+    display: none;
+  }
+
+  .topBar p {
+    justify-content: center;
+  }
+}
+
 .topBar a {
   font-weight: var(--font-weight-semibold);
 }

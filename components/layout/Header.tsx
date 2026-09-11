@@ -59,7 +59,10 @@ export function Header() {
             >
               <span className={styles.burger} aria-hidden />
             </button>
-            <Logo />
+            <Logo
+              height={44}
+              className="[--logo-h:44px] md:[--logo-h:64px] lg:[--logo-h:80px]"
+            />
           </div>
 
           <nav className={styles.desktopNav} aria-label="Primary">

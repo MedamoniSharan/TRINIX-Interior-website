@@ -63,6 +63,13 @@
   --touch-min: 44px;
 }
 
+@media (max-width: 960px) {
+  :root {
+    --header-height: 72px;
+    --page-gutter: 16px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   :root {
     --motion-fast: 0ms;

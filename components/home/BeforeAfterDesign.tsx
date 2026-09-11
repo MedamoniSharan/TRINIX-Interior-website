@@ -4,8 +4,8 @@ import { CompareReveal } from "@/components/ui/compare-reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Parallax, Reveal } from "@/components/motion/Reveal";
 
-const BEFORE_IMAGE = "/images/before-after/before-lounge.jpg";
-const AFTER_IMAGE = "/images/before-after/after-construction.jpg";
+const BEFORE_IMAGE = "/images/before-after/before-fitout.jpg";
+const AFTER_IMAGE = "/images/before-after/after-entrance.jpg";
 
 export function BeforeAfterDesign() {
   return (
@@ -21,15 +21,14 @@ export function BeforeAfterDesign() {
           <Parallax y={36} scale={[0.97, 1.02]} className="mx-auto w-full max-w-3xl">
             <div className="flex w-full items-center justify-center">
               <CompareReveal
-                className="w-full overflow-hidden rounded-2xl border border-[var(--motiq-border)]"
-                style={{ aspectRatio: "16 / 10" }}
+                className="aspect-[4/5] w-full overflow-hidden rounded-2xl border border-[var(--motiq-border)] sm:aspect-[16/10]"
                 before={{
                   src: BEFORE_IMAGE,
-                  alt: "Existing lounge interior before TRINEX redesign",
+                  alt: "Interior under construction before TRINEX finishing",
                 }}
                 after={{
                   src: AFTER_IMAGE,
-                  alt: "Project execution and fit-out after design kickoff",
+                  alt: "Finished entrance door after TRINEX design and execution",
                 }}
                 labels={["Before", "After"]}
                 defaultPosition={50}

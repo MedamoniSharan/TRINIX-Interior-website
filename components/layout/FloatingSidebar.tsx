@@ -24,7 +24,7 @@ export function FloatingSidebar() {
         {CONTACT.instagram && (
           <a
             href={CONTACT.instagram}
-            className={styles.iconBtn}
+            className={`${styles.iconBtn} ${styles.desktopOnly}`}
             data-variant="instagram"
             target="_blank"
             rel="noopener noreferrer"
@@ -37,7 +37,7 @@ export function FloatingSidebar() {
         {CONTACT.facebook && (
           <a
             href={CONTACT.facebook}
-            className={styles.iconBtn}
+            className={`${styles.iconBtn} ${styles.desktopOnly}`}
             data-variant="facebook"
             target="_blank"
             rel="noopener noreferrer"
@@ -50,7 +50,7 @@ export function FloatingSidebar() {
         {CONTACT.linkedin && (
           <a
             href={CONTACT.linkedin}
-            className={styles.iconBtn}
+            className={`${styles.iconBtn} ${styles.desktopOnly}`}
             data-variant="linkedin"
             target="_blank"
             rel="noopener noreferrer"

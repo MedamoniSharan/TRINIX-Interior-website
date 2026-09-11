@@ -5,9 +5,9 @@
 }
 
 .logo img {
-  height: 88px;
   width: auto;
-  max-height: 110px;
+  height: auto;
+  max-height: none;
   object-fit: contain;
   display: block;
 }
@@ -20,16 +20,26 @@
 }
 
 .fallback strong {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: var(--font-weight-bold);
   letter-spacing: 0.06em;
 }
 
 .fallback small {
-  font-size: 10px;
+  font-size: 9px;
   font-weight: var(--font-weight-medium);
   color: var(--color-text-muted);
   letter-spacing: 0.04em;
+}
+
+@media (min-width: 768px) {
+  .fallback strong {
+    font-size: 22px;
+  }
+
+  .fallback small {
+    font-size: 10px;
+  }
 }
 
 :global(.footer) .fallback,

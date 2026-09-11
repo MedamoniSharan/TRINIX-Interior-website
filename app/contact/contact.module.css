@@ -121,8 +121,22 @@
     gap: 32px;
   }
 
+  .formWrap {
+    padding: 24px 18px;
+  }
+
   .mapFrame {
     aspect-ratio: 4 / 3;
     min-height: 240px;
+  }
+}
+
+@media (max-width: 480px) {
+  .formWrap {
+    padding: 18px 14px;
+  }
+
+  .mapFrame {
+    min-height: 220px;
   }
 }

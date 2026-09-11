@@ -6,11 +6,11 @@ import styles from "./Logo.module.css";
 
 type LogoProps = {
   className?: string;
-  /** Pixel height of the mark; width follows aspect ratio. */
+  /** Pixel height of the mark; width follows aspect ratio. Overridden by --logo-h CSS var. */
   height?: number;
 };
 
-export function Logo({ className, height = 88 }: LogoProps) {
+export function Logo({ className, height = 56 }: LogoProps) {
   const [imgError, setImgError] = useState(false);
 
   return (
@@ -26,7 +26,7 @@ export function Logo({ className, height = 88 }: LogoProps) {
           alt="TRINEX by TRINATH DESIGN STUDIO"
           width={height}
           height={height}
-          style={{ height, width: "auto" }}
+          style={{ height: `var(--logo-h, ${height}px)`, width: "auto" }}
           onError={() => setImgError(true)}
         />
       ) : (

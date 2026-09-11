@@ -186,7 +186,7 @@ export function HowWeWork() {
             padding: 3.5rem 1.1rem 4rem;
           }
           .how-work__steps {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-columns: 1fr;
           }
           .how-work__grid {
             columns: 1;

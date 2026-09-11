@@ -216,17 +216,25 @@ export function InteriorFunFacts() {
             gap: 48px 12px;
           }
           .interior-facts__number {
-            font-size: clamp(64px, 19vw, 92px);
+            font-size: clamp(42px, 14vw, 72px);
           }
           .interior-facts__label {
             margin-top: 12px;
-            font-size: 11px;
+            font-size: 10px;
+            white-space: normal;
+            line-height: 1.35;
+            max-width: 9.5rem;
           }
         }
         @media (max-width: 380px) {
+          .interior-facts__list {
+            grid-template-columns: 1fr;
+            gap: 28px;
+          }
           .interior-facts__label {
-            font-size: 10px;
+            font-size: 11px;
             letter-spacing: 0;
+            max-width: none;
           }
         }
         @media (prefers-reduced-motion: reduce) {

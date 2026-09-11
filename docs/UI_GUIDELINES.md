@@ -3,7 +3,7 @@
 ## Brand
 
 - **Name:** TRINEX
-- **Tagline:** Next-Gen 3D Architectural Studio
+- **Tagline:** TRINEX by TRINATH DESIGN STUDIO
 - **Logo:** Use official file at `public/images/trinex-logo.png` — do not recreate or redesign
 
 ## Colors (CSS tokens in `styles/tokens.css`)

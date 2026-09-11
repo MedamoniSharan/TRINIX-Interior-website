@@ -4,7 +4,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "TRINEX by TRINATH DESIGN STUDIO | Next-Gen 3D Architectural Studio",
+    default: "TRINEX by TRINATH DESIGN STUDIO",
     template: "%s | TRINEX",
   },
   description:

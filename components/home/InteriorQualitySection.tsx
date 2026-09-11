@@ -180,17 +180,17 @@ export function InteriorQualitySection({
           text-align: left;
         }
         @media (max-width: 820px) {
-          .interior-quality { padding-top: 76px; padding-bottom: 80px; }
+          .interior-quality { padding-top: 76px; padding-bottom: 80px; min-height: 0; }
           .interior-quality__grid { grid-template-columns: 1fr; gap: 64px; }
           .interior-quality__content { max-width: none; }
           .interior-quality__visual { width: min(680px, 100%); margin: 0 auto; }
         }
         @media (max-width: 520px) {
-          .interior-quality { padding: 58px 20px 64px; }
-          .interior-quality h2 { font-size: 43px; }
+          .interior-quality { padding: 58px 16px 64px; min-height: 0; }
+          .interior-quality h2 { font-size: clamp(1.75rem, 8vw, 2.5rem); }
           .interior-quality__description { font-size: 14px; line-height: 1.75; }
           .interior-quality__features { grid-template-columns: 1fr; gap: 10px; margin-top: 29px; margin-bottom: 34px; }
-          .interior-quality__caption { margin-left: 0; font-size: 18vw; }
+          .interior-quality__caption { margin-left: 0; font-size: clamp(2.5rem, 14vw, 4.5rem); max-width: 100%; overflow: hidden; }
         }
       `}</style>
 

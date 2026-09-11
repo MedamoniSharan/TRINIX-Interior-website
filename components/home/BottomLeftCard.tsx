@@ -96,7 +96,7 @@ export const BottomLeftCard = forwardRef<HTMLDivElement>(
     return (
       <div
         ref={setRefs}
-        className="absolute bottom-28 right-4 left-auto md:left-6 md:right-auto md:bottom-6 lg:bottom-10 lg:left-10 p-3 md:p-4 lg:p-5 rounded-[1.2rem] md:rounded-[1.5rem] lg:rounded-[2.2rem] bg-white/30 backdrop-blur-xl flex flex-col gap-2 lg:gap-3 min-w-[140px] md:min-w-[150px] lg:min-w-[180px] w-fit will-change-transform"
+        className="absolute bottom-24 left-3 right-auto sm:bottom-28 md:left-6 md:bottom-6 lg:bottom-10 lg:left-10 p-2.5 sm:p-3 md:p-4 lg:p-5 rounded-[1.1rem] md:rounded-[1.5rem] lg:rounded-[2.2rem] bg-white/30 backdrop-blur-xl flex flex-col gap-2 lg:gap-3 min-w-[120px] sm:min-w-[140px] md:min-w-[150px] lg:min-w-[180px] w-fit max-w-[46%] will-change-transform"
       >
         <div className="flex flex-col">
           <span

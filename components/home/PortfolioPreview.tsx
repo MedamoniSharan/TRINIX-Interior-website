@@ -10,7 +10,7 @@ export function PortfolioPreview({ items }: { items: PortfolioItem[] }) {
   return (
     <section
       id="portfolio"
-      className="relative overflow-hidden bg-[#f0f0f0] px-6 py-16 md:px-10 md:py-24"
+      className="relative overflow-hidden bg-[#f0f0f0] px-4 py-12 sm:px-6 md:px-10 md:py-24"
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#1e3a5f]/20 to-transparent" />
 

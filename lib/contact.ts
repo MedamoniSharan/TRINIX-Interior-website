@@ -11,7 +11,7 @@ export const CONTACT: SiteContact = {
     saturday: "Saturday: 9:30 AM – 2:00 PM",
     sunday: "Sunday: Closed",
   },
-  tagline: "Next-Gen 3D Architectural Studio",
+  tagline: "TRINEX by TRINATH DESIGN STUDIO",
   whatsappPhone: "917659870346",
   instagram: "https://www.instagram.com/trinexbytds/",
   facebook: "https://www.facebook.com/share/19XH26GCrJ/",

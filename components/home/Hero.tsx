@@ -113,9 +113,9 @@ export function Hero() {
   return (
     <div
       ref={rootRef}
-      className="w-full h-screen flex items-center justify-center p-3 md:p-5 bg-[#f0f0f0]"
+      className="w-full min-h-[100svh] h-[100svh] flex items-center justify-center p-2 sm:p-3 md:p-5 bg-[#f0f0f0]"
     >
-      <section className="relative w-full max-w-[1536px] h-full rounded-[1.5rem] md:rounded-[3rem] overflow-hidden shadow-none flex flex-col items-center bg-white/10 group">
+      <section className="relative w-full max-w-[1536px] h-full rounded-[1.25rem] sm:rounded-[1.5rem] md:rounded-[3rem] overflow-hidden shadow-none flex flex-col items-center bg-white/10 group">
         <motion.video
           autoPlay
           muted
@@ -138,17 +138,17 @@ export function Hero() {
         >
           <Navbar ref={navRef} />
 
-          <div className="w-full flex flex-col items-center pt-8 px-6 text-center max-w-4xl">
+          <div className="w-full flex flex-col items-center pt-4 sm:pt-6 md:pt-8 px-4 sm:px-6 text-center max-w-4xl">
             <HeroBadge ref={badgeRef} />
             <h1
               ref={titleRef}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] font-normal text-[#1a2332] mb-2 tracking-tight leading-[1.05] [text-shadow:0_1px_24px_rgba(255,255,255,0.55)]"
+              className="text-[clamp(1.85rem,8vw,5rem)] md:text-6xl lg:text-[80px] font-normal text-[#1a2332] mb-2 tracking-tight leading-[1.08] [text-shadow:0_1px_24px_rgba(255,255,255,0.55)]"
             >
               Spaces, Designed Fully
             </h1>
             <p
               ref={subtitleRef}
-              className="text-sm sm:text-base md:text-lg text-[#1a2332]/90 leading-relaxed max-w-xl font-normal [text-shadow:0_1px_18px_rgba(255,255,255,0.65)]"
+              className="text-sm sm:text-base md:text-lg text-[#1a2332]/90 leading-relaxed max-w-xl font-normal px-1 [text-shadow:0_1px_18px_rgba(255,255,255,0.65)]"
             >
               From 3D visualization to turnkey execution — residential and
               commercial interiors in Hyderabad, planned and finished under one

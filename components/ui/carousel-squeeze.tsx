@@ -574,7 +574,7 @@ function Arrow({
       aria-label={label}
       onClick={onClick}
       className={cn(
-        "grid size-9 cursor-pointer place-items-center rounded-md",
+        "grid size-11 min-h-11 min-w-11 cursor-pointer place-items-center rounded-md sm:size-9",
         "bg-[var(--sq-fill)]",
         "transition-opacity hover:opacity-85 outline-none",
         "focus-visible:ring-2 focus-visible:ring-[var(--sq-fill)]",

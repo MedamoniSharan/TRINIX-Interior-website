@@ -227,7 +227,7 @@ export default function FooterSection5() {
             scale: wordmarkScale,
             color: "#000000",
           }}
-          className="text-[120px] sm:text-[160px] md:text-[210px] font-bold leading-[0.75] select-none -mb-4 md:-mb-6 will-change-transform"
+          className="text-[clamp(3.25rem,22vw,13.125rem)] font-bold leading-[0.75] select-none -mb-3 sm:-mb-4 md:-mb-6 will-change-transform"
         >
           {companyName}
         </motion.h1>

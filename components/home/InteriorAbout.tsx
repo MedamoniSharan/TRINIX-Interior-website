@@ -154,7 +154,7 @@ export function InteriorAbout() {
           .interior-image-wrap img { min-height: 0; height: 100%; }
           .interior-title-block { order: 1; }
           .interior-copy-block { order: 2; }
-          .interior-title { max-width: none; font-size: clamp(2.55rem, 13vw, 4rem); }
+          .interior-title { max-width: none; font-size: clamp(2rem, 9vw, 3.25rem); line-height: 1.05; }
           .interior-copy { max-width: none; }
         }
         @media (prefers-reduced-motion: reduce) {
