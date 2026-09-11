@@ -1,0 +1,13 @@
+.wrap {
+  margin-bottom: var(--space-24);
+}
+
+.left .section-title,
+.left .section-subtitle {
+  text-align: left;
+  margin-inline: 0;
+}
+
+.left .section-subtitle {
+  max-width: none;
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "modern-3bhk-hyderabad",
+    "title": "Modern 3 BHK Residence",
+    "location": "Vanasthalipuram, Hyderabad",
+    "image": "/images/portfolio/project-1.jpg"
+  },
+  {
+    "slug": "contemporary-office",
+    "title": "Contemporary Office Space",
+    "location": "LB Nagar, Hyderabad",
+    "image": "/images/portfolio/project-2.jpg"
+  },
+  {
+    "slug": "elegant-2bhk",
+    "title": "Elegant 2 BHK Apartment",
+    "location": "Secunderabad",
+    "image": "/images/portfolio/project-3.jpg"
+  },
+  {
+    "slug": "luxury-penthouse",
+    "title": "Luxury Penthouse Interior",
+    "location": "Gachibowli, Hyderabad",
+    "image": "/images/portfolio/project-4.jpg"
+  },
+  {
+    "slug": "modular-kitchen",
+    "title": "Modular Kitchen & Wardrobe",
+    "location": "Kothapet, Hyderabad",
+    "image": "/images/portfolio/project-5.jpg"
+  },
+  {
+    "slug": "commercial-showroom",
+    "title": "Commercial Showroom Fit-out",
+    "location": "Hyderabad",
+    "image": "/images/portfolio/project-6.jpg"
+  }
+]

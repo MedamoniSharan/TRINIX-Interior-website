@@ -1,0 +1,14 @@
+[
+  { "slug": "kitchen", "title": "Kitchen", "image": "/images/categories/kitchen.jpg" },
+  { "slug": "living-room", "title": "Living Room", "image": "/images/categories/living.jpg" },
+  { "slug": "bedroom", "title": "Bedroom", "image": "/images/categories/bedroom.jpg" },
+  { "slug": "office", "title": "Home Office", "image": "/images/categories/office.jpg" },
+  { "slug": "false-ceiling", "title": "False Ceiling", "image": "/images/categories/ceiling.jpg" },
+  { "slug": "flooring", "title": "Flooring", "image": "/images/categories/flooring.jpg" },
+  { "slug": "elevation", "title": "Front Elevation", "image": "/images/categories/elevation.jpg" },
+  { "slug": "bathroom", "title": "Bathroom", "image": "/images/categories/bathroom.jpg" },
+  { "slug": "dining", "title": "Dining Room", "image": "/images/categories/dining.jpg" },
+  { "slug": "wardrobe", "title": "Wardrobe", "image": "/images/categories/wardrobe.jpg" },
+  { "slug": "commercial", "title": "Commercial", "image": "/images/categories/commercial.jpg" },
+  { "slug": "3d-viz", "title": "3D Visualization", "image": "/images/categories/3d.jpg" }
+]

@@ -1,0 +1,23 @@
+[
+  {
+    "headline": "Home to beautiful interiors",
+    "subtext": "Next-Gen 3D Architectural Studio — complete design-to-execution solutions for residential and commercial projects in Hyderabad.",
+    "ctaLabel": "Book Free Consultation",
+    "ctaHref": "/contact/",
+    "image": "/images/hero/hero-1.jpg"
+  },
+  {
+    "headline": "Complete turnkey solutions",
+    "subtext": "From concept and 3D visualization to execution, finishing, and handover — coordinated under one roof.",
+    "ctaLabel": "View Services",
+    "ctaHref": "/services/",
+    "image": "/images/hero/hero-2.jpg"
+  },
+  {
+    "headline": "Design. Visualize. Execute.",
+    "subtext": "Professional interior design, technical drawings, BOQ, and project management for Hyderabad and beyond.",
+    "ctaLabel": "Get Free Quote",
+    "ctaHref": "/contact/",
+    "image": "/images/hero/hero-3.jpg"
+  }
+]

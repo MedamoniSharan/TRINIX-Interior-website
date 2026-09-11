@@ -1,0 +1,34 @@
+.section {
+  background: var(--color-brand);
+  color: var(--color-text-inverse);
+}
+
+.section .section-title {
+  color: var(--color-text-inverse);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  padding: 24px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.card h3 {
+  margin: 0 0 8px;
+  font-size: var(--font-size-md);
+  color: var(--color-accent);
+}
+
+.card p {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.85);
+}

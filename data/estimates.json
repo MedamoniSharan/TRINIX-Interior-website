@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Residential Project",
+    "description": "Get an estimate for your home interior design and execution project.",
+    "href": "/contact/?type=residential"
+  },
+  {
+    "title": "Commercial Project",
+    "description": "Request costing for office, retail, or commercial fit-out projects.",
+    "href": "/contact/?type=commercial"
+  },
+  {
+    "title": "Turnkey Interior",
+    "description": "Complete design-to-execution estimate for your turnkey project.",
+    "href": "/contact/?type=turnkey"
+  }
+]

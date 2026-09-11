@@ -1,0 +1,23 @@
+[
+  {
+    "slug": "turnkey-interior-guide",
+    "title": "What Is a Turnkey Interior Project? How It Works and When It Makes Sense",
+    "excerpt": "Understand the complete design-to-execution process and how turnkey solutions simplify your interior journey.",
+    "date": "September 01, 2026",
+    "image": "/images/insights/turnkey.jpg"
+  },
+  {
+    "slug": "3d-visualization-benefits",
+    "title": "Why 3D Visualization Is Essential Before You Build",
+    "excerpt": "See how photorealistic renders help you make confident design decisions and avoid costly changes on site.",
+    "date": "August 28, 2026",
+    "image": "/images/insights/3d-viz.jpg"
+  },
+  {
+    "slug": "boq-estimation-guide",
+    "title": "Understanding BOQ and Project Estimation for Interior Projects",
+    "excerpt": "A practical guide to bill of quantities, cost breakdowns, and planning your interior budget effectively.",
+    "date": "August 22, 2026",
+    "image": "/images/insights/boq.jpg"
+  }
+]

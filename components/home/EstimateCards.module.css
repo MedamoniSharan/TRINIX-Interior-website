@@ -1,0 +1,38 @@
+.section {
+  background: var(--color-surface-muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-card-gap);
+}
+
+.card {
+  padding: 28px;
+  background: var(--color-surface-base);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.card h3 {
+  margin: 0 0 8px;
+  font-size: var(--font-size-xl);
+  color: var(--color-brand);
+}
+
+.card p {
+  margin: 0 0 20px;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.link {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-accent);
+}
+
+.link:hover {
+  text-decoration: underline;
+}

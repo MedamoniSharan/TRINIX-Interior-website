@@ -1,0 +1,126 @@
+.footer {
+  background: var(--color-brand);
+  color: var(--color-text-inverse);
+}
+
+.ctaBanner {
+  background: var(--color-surface-muted);
+  color: var(--color-text-primary);
+  padding: var(--space-32) 0;
+}
+
+.ctaInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.ctaInner h2 {
+  margin: 0 0 8px;
+  font-size: clamp(22px, 3vw, 28px);
+  color: var(--color-brand);
+}
+
+.ctaInner p {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.main {
+  padding: var(--space-32) var(--page-gutter) var(--space-24);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(3, 1fr);
+  gap: 32px;
+}
+
+.brandCol .tagline {
+  margin: 12px 0 8px;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-accent);
+}
+
+.about {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 280px;
+}
+
+.grid h3 {
+  margin: 0 0 16px;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+}
+
+.grid ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.grid li {
+  margin-bottom: 8px;
+}
+
+.grid a {
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.85);
+  transition: color var(--motion-fast);
+}
+
+.grid a:hover {
+  color: var(--color-text-inverse);
+}
+
+.contactList li {
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.5;
+}
+
+.bottom {
+  margin-top: var(--space-32);
+  padding-top: var(--space-24);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: var(--font-size-xs);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.bottom p {
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .brandCol {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ctaInner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "turnkey-interiors",
+    "title": "Turnkey Interiors",
+    "description": "Complete design-to-execution solutions from concept to handover.",
+    "href": "/services/turnkey-interior-projects/"
+  },
+  {
+    "slug": "residential",
+    "title": "Residential Design",
+    "description": "Tailored home interiors with coordinated planning and execution.",
+    "href": "/services/residential-interior-design/"
+  },
+  {
+    "slug": "commercial",
+    "title": "Commercial Projects",
+    "description": "Functional commercial spaces designed for brand and productivity.",
+    "href": "/services/commercial-interior-projects/"
+  },
+  {
+    "slug": "modular-furniture",
+    "title": "Modular & Custom Furniture",
+    "description": "Bespoke furniture solutions designed for your exact space.",
+    "href": "/services/modular-custom-furniture/"
+  },
+  {
+    "slug": "3d-visualization",
+    "title": "3D Visualization",
+    "description": "Photorealistic renders to visualize your project before build.",
+    "href": "/services/3d-visualization/"
+  },
+  {
+    "slug": "space-planning",
+    "title": "Space Planning & Design",
+    "description": "Optimized layouts that maximize usability and aesthetic appeal.",
+    "href": "/services/space-planning/"
+  }
+]

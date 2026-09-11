@@ -1,0 +1,142 @@
+.sidebar {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  pointer-events: none;
+}
+
+.quoteBtn,
+.icons,
+.iconBtn {
+  pointer-events: auto;
+}
+
+.quoteBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  min-height: 180px;
+  padding: 16px 10px;
+  background: rgba(45, 45, 45, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-right: none;
+  color: var(--color-text-inverse);
+  font-size: 11px;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  transition: background var(--motion-fast);
+}
+
+.quoteBtn:hover {
+  background: rgba(30, 58, 95, 0.95);
+}
+
+.icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 8px;
+  background: rgba(45, 45, 45, 0.75);
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.iconBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  color: var(--color-text-inverse);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  transition: transform var(--motion-fast), box-shadow var(--motion-fast);
+}
+
+.iconBtn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.iconBtn svg {
+  width: 22px;
+  height: 22px;
+}
+
+.iconBtn[data-variant="whatsapp"] {
+  background: #25d366;
+}
+
+.iconBtn[data-variant="instagram"] {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+
+.iconBtn[data-variant="facebook"] {
+  background: #1877f2;
+}
+
+.iconBtn[data-variant="phone"] {
+  background: #00a896;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    top: auto;
+    bottom: 80px;
+    transform: none;
+  }
+
+  .quoteBtn {
+    min-height: 140px;
+    font-size: 10px;
+    width: 40px;
+  }
+
+  .iconBtn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .iconBtn svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: none;
+    flex-direction: row;
+    justify-content: center;
+    background: rgba(45, 45, 45, 0.92);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 8px 12px;
+  }
+
+  .quoteBtn {
+    display: none;
+  }
+
+  .icons {
+    flex-direction: row;
+    padding: 0;
+    background: transparent;
+    border: none;
+    gap: 12px;
+  }
+}

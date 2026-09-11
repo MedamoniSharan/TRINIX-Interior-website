@@ -1,0 +1,42 @@
+.logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logo img {
+  height: 64px;
+  width: auto;
+  max-height: 72px;
+  object-fit: contain;
+  display: block;
+}
+
+.fallback {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+  color: var(--color-brand);
+}
+
+.fallback strong {
+  font-size: 22px;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.06em;
+}
+
+.fallback small {
+  font-size: 10px;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-muted);
+  letter-spacing: 0.04em;
+}
+
+:global(.footer) .fallback,
+:global(.footer) .fallback strong {
+  color: var(--color-text-inverse);
+}
+
+:global(.footer) .fallback small {
+  color: rgba(255, 255, 255, 0.7);
+}
