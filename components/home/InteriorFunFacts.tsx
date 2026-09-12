@@ -17,7 +17,7 @@ const funFacts: FunFact[] = [
   },
   {
     id: "experience",
-    value: 12,
+    value: 10,
     label: "YEARS OF EXPERIENCE",
   },
   {
@@ -27,7 +27,7 @@ const funFacts: FunFact[] = [
   },
   {
     id: "awards",
-    value: 15,
+    value: 0,
     label: "BEST INTERIOR AWARDS",
   },
 ];
