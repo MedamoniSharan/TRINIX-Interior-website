@@ -20,7 +20,7 @@ export function Hero() {
   const rootRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLElement>(null);
   const badgeRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
+  const titleRef = useRef<HTMLParagraphElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const leftCardRef = useRef<HTMLDivElement>(null);
   const rightCardRef = useRef<HTMLAnchorElement>(null);
@@ -140,15 +140,15 @@ export function Hero() {
 
           <div className="w-full flex flex-col items-center pt-4 sm:pt-6 md:pt-8 px-4 sm:px-6 text-center max-w-4xl">
             <HeroBadge ref={badgeRef} />
-            <h1
+            <p
               ref={titleRef}
-              className="text-[clamp(1.85rem,8vw,5rem)] md:text-6xl lg:text-[80px] font-normal text-[#1a2332] mb-2 tracking-tight leading-[1.08] [text-shadow:0_1px_24px_rgba(255,255,255,0.55)]"
+              className="text-[clamp(1.05rem,3.6vw,1.75rem)] md:text-2xl lg:text-[1.85rem] font-medium text-[#1a2332]/90 mb-3 tracking-tight leading-snug [text-shadow:0_1px_18px_rgba(255,255,255,0.55)]"
             >
               Spaces, Designed Fully
-            </h1>
+            </p>
             <p
               ref={subtitleRef}
-              className="text-sm sm:text-base md:text-lg text-[#1a2332]/90 leading-relaxed max-w-xl font-normal px-1 [text-shadow:0_1px_18px_rgba(255,255,255,0.65)]"
+              className="text-sm sm:text-base md:text-lg text-[#1a2332]/85 leading-relaxed max-w-xl font-normal px-1 [text-shadow:0_1px_18px_rgba(255,255,255,0.65)]"
             >
               From 3D visualization to turnkey execution — residential and
               commercial interiors in Hyderabad, planned and finished under one

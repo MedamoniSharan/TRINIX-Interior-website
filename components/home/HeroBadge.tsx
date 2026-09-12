@@ -6,12 +6,11 @@ export const HeroBadge = forwardRef<HTMLDivElement>(function HeroBadge(_, ref) {
   return (
     <div
       ref={ref}
-      className="flex items-center px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/60 backdrop-blur-md border border-white/20 mx-auto mb-3 w-fit max-w-[min(100%,22rem)]"
+      className="mx-auto mb-3 sm:mb-4 w-full max-w-[min(100%,44rem)] px-1"
     >
-      <span className="text-[11px] sm:text-[13px] md:text-[14px] font-normal text-[rgba(30,50,90,0.9)] text-center leading-snug text-balance">
-        <span className="sm:hidden">TRINEX by TDS</span>
-        <span className="hidden sm:inline">TRINEX by TRINATH DESIGN STUDIO</span>
-      </span>
+      <h1 className="text-[clamp(1.45rem,6vw,3.5rem)] md:text-[3.75rem] lg:text-[4.5rem] font-semibold text-[#1a2332] text-center leading-[1.1] tracking-tight [text-shadow:0_1px_24px_rgba(255,255,255,0.55)]">
+        TRINEX by TRINATH DESIGN STUDIO
+      </h1>
     </div>
   );
 });
