@@ -284,7 +284,9 @@ export default function FooterSection5() {
               >
                 <TrinexLogo className="w-36 h-36 shrink-0 mb-3 object-contain drop-shadow-md" />
               </motion.div>
-              <p className="text-sm text-white/80 mb-3">{CONTACT.tagline}</p>
+              <p className="text-lg md:text-2xl lg:text-3xl font-semibold tracking-wide text-white mb-3 leading-snug">
+                {CONTACT.tagline}
+              </p>
               <h2 className="text-xl md:text-[22px] font-medium leading-tight text-white">
                 Design → Plan → Visualize
                 <br />
