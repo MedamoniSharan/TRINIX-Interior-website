@@ -135,9 +135,12 @@ export function InteriorAbout() {
         .interior-signoff a:hover img { transform: scale(1.03); }
         .interior-signoff h2 {
           margin: 0;
-          font-size: .8rem;
+          max-width: 16rem;
+          margin-left: auto;
+          font-size: clamp(0.95rem, 2.4vw, 1.15rem);
           font-weight: 600;
-          letter-spacing: .18em;
+          letter-spacing: .06em;
+          line-height: 1.35;
           text-transform: uppercase;
         }
         @media (max-width: 820px) {
@@ -203,9 +206,9 @@ export function InteriorAbout() {
                 aria-label={`Learn more about ${CONTACT.tagline}`}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/trinex-logo-v2.png" alt="TRINEX" />
+                <img src="/images/trinex-logo-v2.png" alt={CONTACT.tagline} />
               </Link>
-              <h2>TRINEX</h2>
+              <h2>{CONTACT.tagline}</h2>
             </div>
           </motion.div>
         </motion.div>
